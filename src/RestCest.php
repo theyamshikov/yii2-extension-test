@@ -7,6 +7,7 @@ use yii\helpers\ArrayHelper;
 class RestCest
 {
 	protected $authId = null;
+	public $format = [];
 	
 	const TYPE_DATE = 'string:date|null';
 	const TYPE_STRING = 'string';
