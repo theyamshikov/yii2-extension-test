@@ -1,0 +1,17 @@
+{
+    "name": "wooppay/yii2-extension-test",
+    "type": "yii2-extension",
+    "authors": [
+        {
+            "name": "Vitaliy",
+            "email": "theyamshikov@yandex.ru"
+        }
+    ],
+	"minimum-stability": "dev",
+	"autoload": {
+        "psr-4": {
+             "woop\\extension\\test\\": "src"
+         }
+    },
+    "require": {}
+}
