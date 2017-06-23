@@ -1,6 +1,6 @@
 <?php
 
-namespace woop\extension\test\traits;
+namespace yii2lab\test\traits;
 
 use yii\helpers\ArrayHelper;
 use woop\module\rest\models\Login;

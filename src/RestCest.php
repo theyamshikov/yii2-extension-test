@@ -1,6 +1,6 @@
 <?php
 
-namespace woop\extension\test;
+namespace yii2lab\test;
 
 use yii\helpers\ArrayHelper;
 
