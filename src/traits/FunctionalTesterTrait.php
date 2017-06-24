@@ -3,7 +3,7 @@
 namespace yii2lab\test\traits;
 
 use yii\helpers\ArrayHelper;
-use yii2module\rest_client\models\Login;
+use yii2lab\test\models\Login;
 
 trait FunctionalTesterTrait
 {
