@@ -14,7 +14,12 @@ trait FunctionalTesterTrait
 	{
 		$this->see($message, '.help-block');
 	}
-	
+
+	public function seeListCount($value) {
+		$body = $this->getResponseBody();
+		expect($value)->equals(count($body));
+	}
+
 	public function getResponseBody() {
 		$body = $this->grabResponse();
 		$body = \GuzzleHttp\json_decode($body);
