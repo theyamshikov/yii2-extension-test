@@ -10,6 +10,7 @@ class RestCest
 	public $format = [];
 	
 	const TYPE_DATE = 'string:date|null';
+	const TYPE_FLOAT = 'float|integer';
 	const TYPE_STRING = 'string';
 	const TYPE_STRING_OR_NULL = 'string|null';
 	const TYPE_INTEGER = 'integer';
@@ -18,6 +19,8 @@ class RestCest
 	const TYPE_BOOLEAN_OR_NULL = 'boolean|null';
 	const TYPE_ARRAY = 'array';
 	const TYPE_ARRAY_OR_NULL = 'array|null';
+
+	const EMPTY_STRING = '';
 	
 	public function _before($I) {
 		$I->haveHttpHeader('language', 'xx');
@@ -27,5 +30,20 @@ class RestCest
 		}
 		$I->format = $this->format;
 	}
-	
+
+	protected function loadFixtures($fixtures) {
+		foreach($fixtures as $fixtureClass) {
+			$fixture = new $fixtureClass;
+			$fixture->unload();
+			$fixture->load();
+		}
+	}
+
+	protected function unloadFixtures($fixtures) {
+		foreach($fixtures as $fixtureClass) {
+			$fixture = new $fixtureClass;
+			$fixture->unload();
+		}
+	}
+
 }

@@ -4,6 +4,7 @@ namespace yii2lab\test\traits;
 
 use yii\helpers\ArrayHelper;
 use yii2lab\test\models\Login;
+use Codeception\Util\HttpCode;
 
 trait FunctionalTesterTrait
 {
@@ -41,12 +42,12 @@ trait FunctionalTesterTrait
 		}
 	}
 	
-	public function seeResponse($code = 200, $body = null, $existsOnly = false) {
+	public function seeResponse($code = HttpCode::OK, $body = null, $existsOnly = false) {
 		$this->SeeResponseCodeIs($code);
-		if(!empty($this->format) && $code == 200) {
+		if(!empty($this->format) && $code == HttpCode::OK) {
 			$this->seeResponseMatchesJsonType($this->format);
 		}
-		if($code == 422) {
+		if($code == HttpCode::UNPROCESSABLE_ENTITY) {
 			$this->seeResponseMatchesJsonType([
 				'field' => 'string',
 				'message' => 'string',
@@ -56,7 +57,20 @@ trait FunctionalTesterTrait
 			$this->seeBody($body, $existsOnly);
 		}
 	}
-	
+
+	public function seeUnprocessableEntity($body = null) {
+		$this->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
+		if(!empty($body)) {
+			$this->seeBody($body);
+		}
+	}
+
+	public function dontSeeResponseJsonFields($fields) {
+		foreach($fields as $field) {
+			$this->dontSeeResponseJsonMatchesJsonPath('$.' . $field);
+		}
+	}
+
 	private function setAuth($login, $password) {
 		$token = null;
 		
