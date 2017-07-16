@@ -2,6 +2,7 @@
 
 namespace yii2lab\test\traits;
 
+use Yii;
 use yii\helpers\ArrayHelper;
 use yii2lab\test\models\Login;
 use Codeception\Util\HttpCode;
@@ -79,10 +80,16 @@ trait FunctionalTesterTrait
 			return false;
 		}
 		
-		$identityClass = config('components.user.identityClass');
+		/* $identityClass = config('components.user.identityClass');
 		$user = $identityClass::authentication($login, $password);
+		$token = $user['auth_key']; */
 		
-		$token = $user['auth_key'];
+		$this->sendPOST('auth', [
+			'login' => $login,
+			'password' => $password,
+		]);
+		$user = $this->getResponseBody();
+		$token = $user['token'];
 		
 		$this->haveHttpHeader('Authorization', $token);
 		return $token;
