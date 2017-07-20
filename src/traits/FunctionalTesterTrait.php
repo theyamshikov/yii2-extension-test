@@ -43,26 +43,15 @@ trait FunctionalTesterTrait
 		}
 	}
 	
-	public function seeResponse($code = HttpCode::OK, $body = null, $existsOnly = false) {
-		$this->SeeResponseCodeIs($code);
-		if(!empty($this->format) && $code == HttpCode::OK) {
-			$this->seeResponseMatchesJsonType($this->format);
-		}
-		if($code == HttpCode::UNPROCESSABLE_ENTITY) {
-			$this->seeResponseMatchesJsonType([
-				'field' => 'string',
-				'message' => 'string',
-			]);
-		}
-		if(!empty($body)) {
-			$this->seeBody($body, $existsOnly);
-		}
-	}
-
 	public function seeUnprocessableEntity($body = null) {
 		$this->seeResponseCodeIs(HttpCode::UNPROCESSABLE_ENTITY);
 		if(!empty($body)) {
 			$this->seeBody($body);
+		} else {
+			$this->seeResponseMatchesJsonType([
+				'field' => 'string',
+				'message' => 'string',
+			]);
 		}
 	}
 
