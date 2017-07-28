@@ -11,6 +11,7 @@ trait FunctionalTesterTrait
 {
 	
 	public $format;
+	public $password = 'Wwwqqq111';
 	
 	public function seeValidationError($message)
 	{
@@ -68,11 +69,6 @@ trait FunctionalTesterTrait
 			$this->haveHttpHeader('Authorization', null);
 			return false;
 		}
-		
-		/* $identityClass = config('components.user.identityClass');
-		$user = $identityClass::authentication($login, $password);
-		$token = $user['auth_key']; */
-		
 		$this->sendPOST('auth', [
 			'login' => $login,
 			'password' => $password,
@@ -88,17 +84,16 @@ trait FunctionalTesterTrait
 		$login = null;
 		$password = null;
 		if($role) {
-			$user = Login::one(['role' => $role]);
-			$login = $user['login'];
-			$password = $user['password'];
+			$user = $loginList = Yii::$app->account->test->getOneByRole($role);
+			$login = $user->login;
+			$password = $this->password;
 		}
 		return self::setAuth($login, $password);
 	}
 	
 	public function auth($login = null, $password = null) {
 		if(empty($password)) {
-			$user = Login::one($login);
-			$password = $user['password'];
+			$password = $this->password;
 		}
 		return self::setAuth($login, $password);
 	}
