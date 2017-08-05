@@ -3,8 +3,7 @@
 namespace yii2lab\test\traits;
 
 use Yii;
-use yii\helpers\ArrayHelper;
-use yii2lab\test\models\Login;
+use yii2mod\helpers\ArrayHelper;use yii2lab\test\models\Login;
 use Codeception\Util\HttpCode;
 
 trait FunctionalTesterTrait
@@ -22,7 +21,25 @@ trait FunctionalTesterTrait
 		$body = $this->getResponseBody();
 		expect($value)->equals(count($body));
 	}
-
+	
+	public function seeSort($first, $last, $key = null) {
+		$this->seeItem($first, 'first', $key);
+		$this->seeItem($last, 'last', $key);
+	}
+	
+	public function seeItem($expect, $id, $key = null) {
+		$body = $this->getResponseBody();
+		if($id == 'first') {
+			$item = ArrayHelper::first($body);
+		} elseif($id == 'last') {
+			$item = ArrayHelper::last($body);
+		} else {
+			$item = $body[$id];
+		}
+		$value = ArrayHelper::getValue($item, $key);
+		expect($expect)->equals($value);
+	}
+	
 	public function getResponseBody() {
 		$body = $this->grabResponse();
 		$body = \GuzzleHttp\json_decode($body);
