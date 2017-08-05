@@ -73,6 +73,24 @@ trait FunctionalTesterTrait
 		}
 	}
 
+	protected function fieldsOnly($expected, $item) {
+		$diff = array_diff(array_keys($item), $expected);
+		expect($diff)->equals([]);
+		$diff = array_diff($expected, array_keys($item));
+		expect($diff)->equals([]);
+	}
+
+	public function seeResponseJsonFieldsOnly($fields) {
+		$response = $this->getResponseBody();
+		if(ArrayHelper::isIndexed($response)) {
+			foreach($response as $item) {
+				$this->fieldsOnly($fields, $item);
+			}
+		} else {
+			$this->fieldsOnly($fields, $response);
+		}
+	}
+	
 	public function dontSeeResponseJsonFields($fields) {
 		foreach($fields as $field) {
 			$this->dontSeeResponseJsonMatchesJsonPath('$.' . $field);
