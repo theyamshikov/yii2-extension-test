@@ -3,7 +3,9 @@
 namespace yii2lab\test\traits;
 
 use Yii;
-use yii2mod\helpers\ArrayHelper;use yii2lab\test\models\Login;
+use yii2lab\test\Util\HttpHeader;
+use yii2mod\helpers\ArrayHelper;
+use yii2lab\test\models\Login;
 use Codeception\Util\HttpCode;
 
 trait FunctionalTesterTrait
@@ -16,10 +18,45 @@ trait FunctionalTesterTrait
 	{
 		$this->see($message, '.help-block');
 	}
-
+	
+	private function seeItemValue($item, $values) {
+		foreach ($values as $name => $value) {
+			expect(isset($item[$name]))->true();
+			expect($item[$name])->equals($value);
+		}
+	}
+	
+	public function seeContainValues($values) {
+		$response = $this->getResponseBody();
+		if(ArrayHelper::isIndexed($response)) {
+			foreach($response as $item) {
+				$this->seeItemValue($item, $values);
+			}
+		} else {
+			$this->seeItemValue($response, $values);
+		}
+	}
+	
+	public function seeListHttpHeaders(array $values) {
+		foreach($values as $name => $value) {
+			$this->seeHttpHeader($name, $value);
+		}
+		$total_count = ArrayHelper::getValue($values, HttpHeader::TOTAL_COUNT);
+		$per_page = ArrayHelper::getValue($values, HttpHeader::PER_PAGE, 20);
+		if(empty($count)) {
+			return;
+		}
+		if($total_count < $per_page) {
+			$this->seeListCount($total_count);
+		} else {
+			$this->seeListCount($per_page);
+		}
+	}
+	
 	public function seeListCount($value) {
 		$body = $this->getResponseBody();
-		expect($value)->equals(count($body));
+		$count = count($body);
+		expect($value)->equals($count);
 	}
 	
 	public function seeSort($first, $last, $key = null) {
