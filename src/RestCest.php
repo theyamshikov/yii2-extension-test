@@ -2,6 +2,9 @@
 
 namespace yii2lab\test;
 
+use api\tests\FunctionalTester;
+use yii\test\ActiveFixture;
+
 class RestCest
 {
 	protected $authId = null;
@@ -9,7 +12,7 @@ class RestCest
 
 	const EMPTY_STRING = '';
 	
-	public function _before($I) {
+	public function _before(FunctionalTester $I) {
 		$I->haveHttpHeader('language', 'xx');
 		if(method_exists($this, '_fixtures')) {
 			$fixtures = $this->_fixtures();
@@ -20,6 +23,7 @@ class RestCest
 
 	protected function loadFixtures($fixtures) {
 		foreach($fixtures as $fixtureClass) {
+			/** @var ActiveFixture $fixture */
 			$fixture = new $fixtureClass;
 			$fixture->unload();
 			$fixture->load();
@@ -28,6 +32,7 @@ class RestCest
 
 	protected function unloadFixtures($fixtures) {
 		foreach($fixtures as $fixtureClass) {
+			/** @var ActiveFixture $fixture */
 			$fixture = new $fixtureClass;
 			$fixture->unload();
 		}
