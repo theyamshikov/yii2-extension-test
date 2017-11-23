@@ -133,14 +133,18 @@ trait FunctionalTesterTrait
 			$this->dontSeeResponseJsonMatchesJsonPath('$.' . $field);
 		}
 	}
-
-	private function setAuth($login, $password) {
+	
+	public function auth($login, $password = null) {
 		$token = null;
 		
 		if(empty($login) || $login == 'guest') {
 			$this->haveHttpHeader('Authorization', null);
 			return false;
 		}
+		
+		$user = $loginList = Yii::$app->account->test->oneByLogin($login);
+		$password = !empty($password) ?  $password: $user->password;
+		
 		$this->sendPOST('auth', [
 			'login' => $login,
 			'password' => $password,
@@ -154,20 +158,11 @@ trait FunctionalTesterTrait
 	
 	public function authAsRole($role = null) {
 		$login = null;
-		$password = null;
 		if($role) {
 			$user = $loginList = Yii::$app->account->test->getOneByRole($role);
 			$login = $user->login;
-			$password = $this->password;
 		}
-		return self::setAuth($login, $password);
-	}
-	
-	public function auth($login = null, $password = null) {
-		if(empty($password)) {
-			$password = $this->password;
-		}
-		return self::setAuth($login, $password);
+		return self::auth($login);
 	}
 	
 	public function dontSeeValidationError($message)
