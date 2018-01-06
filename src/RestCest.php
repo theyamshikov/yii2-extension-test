@@ -3,6 +3,7 @@
 namespace yii2lab\test;
 
 use api\tests\FunctionalTester;
+use Yii;
 use yii\test\ActiveFixture;
 
 class RestCest
@@ -24,7 +25,7 @@ class RestCest
 	protected function loadFixtures($fixtures) {
 		foreach($fixtures as $fixtureClass) {
 			/** @var ActiveFixture $fixture */
-			$fixture = new $fixtureClass;
+			$fixture = Yii::createObject($fixtureClass);
 			$fixture->unload();
 			$fixture->load();
 		}
