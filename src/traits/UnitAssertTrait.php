@@ -2,6 +2,7 @@
 
 namespace yii2lab\test\traits;
 
+use yii\helpers\ArrayHelper;
 use yii2lab\domain\BaseEntity;
 
 trait UnitAssertTrait
@@ -12,10 +13,10 @@ trait UnitAssertTrait
 	}
 	
 	public function assertCollection(array $expect, array $collection) {
-		$expect = array_values($expect);
-		$collection = array_values($collection);
-		foreach($collection as $key => $entity) {
-			$this->assertEntity($expect[$key], $entity);
+		foreach($expect as $key => $expectItem) {
+			$entity = $collection[$key];
+			$expectItem = ArrayHelper::toArray($expectItem);
+			$this->assertEntity($expectItem, $entity);
 		}
 	}
 	
