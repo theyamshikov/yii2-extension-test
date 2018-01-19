@@ -12,7 +12,6 @@ trait UnitAssertTrait
 	}
 	
 	public function assertCollection(array $expect, array $collection) {
-		expect(true)->equals(count($expect) == count($collection));
 		$expect = array_values($expect);
 		$collection = array_values($collection);
 		foreach($collection as $key => $entity) {
