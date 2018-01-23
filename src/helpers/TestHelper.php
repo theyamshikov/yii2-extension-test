@@ -10,9 +10,7 @@ use yii2lab\helpers\yii\FileHelper;
 
 class TestHelper {
 	
-	const DEFAULT_APPLICATION_PATH = 'vendor/yii2lab/yii2-app/tests/store/app';
-	
-	public static function loadTestConfig($config = [], $path = self::DEFAULT_APPLICATION_PATH) {
+	public static function loadTestConfig($config = [], $path = TEST_APPLICATION_DIR) {
 		Env::init($path);
 		$definition = Env::get('config');
 		$testConfig = Config::load($definition);
@@ -44,10 +42,10 @@ class TestHelper {
 		if(is_string($filter)) {
 			return $filter;
 		}
-		if($filter['app'] == 'vendor/yii2lab/yii2-app/tests/store/app/console') {
+		if($filter['app'] == TEST_APPLICATION_DIR . DS . 'console') {
 			return null;
 		}
-		if($filter['app'] == 'vendor/yii2lab/yii2-app/tests/store/app/common') {
+		if($filter['app'] == TEST_APPLICATION_DIR . DS . 'common') {
 			$filter['app'] = $path;
 		}
 		return $filter;
