@@ -8,7 +8,20 @@ use yii2lab\helpers\yii\FileHelper;
 
 class TestHelper {
 	
-	public static function replacePath($definition, $path) {
+	public static function loadEnvFromPath($path) {
+		$config = require(ROOT_DIR . DS . TEST_APPLICATION_DIR . DS . 'common/config/env.php');
+		$config['config'] = TestHelper::replacePath($config['config'], $path);
+		return $config;
+	}
+	
+	public static function loadConfigFromPath($path) {
+		$definition = Env::get('config');
+		$definition = TestHelper::replacePath($definition, $path);
+		$testConfig = Config::load($definition);
+		return $testConfig;
+	}
+	
+	private static function replacePath($definition, $path) {
 		$path = FileHelper::normalizePath($path);
 		$path = self::trimPath($path);
 		$filters = [];
@@ -20,13 +33,6 @@ class TestHelper {
 		}
 		$definition['filters'] = $filters;
 		return $definition;
-	}
-	
-	public static function makeConfigFromPath($path) {
-		$definition = Env::get('config');
-		$definition = TestHelper::replacePath($definition, $path);
-		$testConfig = Config::load($definition);
-		return $testConfig;
 	}
 	
 	private static function trimPath($path) {
