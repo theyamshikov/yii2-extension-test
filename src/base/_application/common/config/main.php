@@ -5,7 +5,7 @@ use yii2module\lang\domain\enums\LanguageEnum;
 
 return [
 	'name' => 'Test',
-	'language' => LanguageEnum::RU, // current Language
+	'language' => LanguageEnum::SOURCE, // current Language
 	'sourceLanguage' => LanguageEnum::SOURCE, // Language development
 	'bootstrap' => ['log', 'language', 'queue'],
 	'timeZone' => 'UTC',
