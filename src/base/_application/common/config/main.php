@@ -9,10 +9,6 @@ return [
 	'sourceLanguage' => LanguageEnum::SOURCE, // Language development
 	'bootstrap' => ['log', 'language', 'queue'],
 	'timeZone' => 'UTC',
-	'aliases' => [
-		'@bower' => '@vendor/bower-asset',
-		'@npm'   => '@vendor/npm-asset',
-	],
 	'components' => [
 		'language' => 'yii2module\lang\domain\components\Language',
         'user' => [
@@ -33,17 +29,12 @@ return [
 		],
 		'authManager' => [
 			'class' => 'yii2lab\rbac\rbac\PhpManager',
-			'itemFile' => '@common/data/rbac/items.php',
-			'ruleFile' => '@common/data/rbac/rules.php',
+			'itemFile' => '@yii2lab/test/base/_application/common/data/rbac/items.php',
+			'ruleFile' => '@yii2lab/test/base/_application/common/data/rbac/rules.php',
 			'defaultRoles' => ['rGuest'],
 		],
-		'urlManager' => [
-			'enablePrettyUrl' => true,
-			'showScriptName' => false,
-		],
 		'cache' => [
-			'class' => 'yii\caching\FileCache',
-			'cachePath' => '@common/runtime/cache',
+			'class' => 'yii\caching\ArrayCache',
 		],
 		'i18n' => [
 			'class' => 'yii2module\lang\domain\i18n\I18N',
@@ -58,19 +49,14 @@ return [
 		'db' => Db::getConfig([
 			'class' => 'yii\db\Connection',
 			'charset' => 'utf8',
-			'enableSchemaCache' => YII_ENV_PROD,
-			/*
-			'enableSchemaCache' => true,
-			'schemaCacheDuration' => 3600,
-			'schemaCache' => 'cache',
-			*/
+			'enableSchemaCache' => false,
 		], YII_ENV_TEST ? 'test' : 'main'),
 		'mailer' => [
 			'class' => 'yii\swiftmailer\Mailer',
 			'viewPath' => '@common/mail',
             'htmlLayout' => '@yii2lab/notify/domain/mail/layouts/html',
             'textLayout' => '@yii2lab/notify/domain/mail/layouts/text',
-			'useFileTransport' => YII_DEBUG,
+			'useFileTransport' => true,
 			'fileTransportPath' => '@common/runtime/mail',
 		],
 		'queue' => [
