@@ -1,11 +1,9 @@
 <?php
 
-return [
-	'project' => 'test',
-	'mode' => [
-		'debug' => true,
-		'env' => 'dev',
-	],
+use yii\helpers\ArrayHelper;
+use yii2lab\test\helpers\TestHelper;
+
+$config = [
 	'url' => [
 		'frontend' => 'http://example.com/',
 		'backend' => 'http://admin.example.com/',
@@ -15,28 +13,21 @@ return [
 		'frontend' => 'bBXEWnH5ERCG7SF3wxtbotYxq3W-Op7B',
 		'backend' => 'zbfqVR5PhdO3E8Xi7DB4aoxmxSstJ6aI',
 	],
+];
+
+$forceConfig = [
+	'project' => 'test',
+	'mode' => [
+		'debug' => true,
+		'env' => 'dev',
+	],
 	'domain' => [
 		'driver' => [
 			'primary' => 'disc',
 			'slave' => 'ar',
 		],
 	],
-	'servers' => [
-		'db' => [
-			'main' => [
-				'driver' => 'mysql',
-				'host' => 'localhost',
-				'username' => 'root',
-				'password' => '',
-				'dbname' => 'example',
-			],
-			'test' => [
-				'driver' => 'mysql',
-				'host' => 'localhost',
-				'username' => 'root',
-				'password' => '',
-				'dbname' => 'example_test',
-			],
-		],
-	],
 ];
+
+$appConfig = TestHelper::loadConfig('common/config/env-local.php', '');
+return ArrayHelper::merge($config, $appConfig, $forceConfig);

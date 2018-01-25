@@ -2,6 +2,7 @@
 
 namespace yii2lab\test\helpers;
 
+use yii\helpers\ArrayHelper;
 use yii2lab\app\domain\helpers\Config;
 use yii2lab\app\domain\helpers\Env;
 use yii2lab\helpers\yii\FileHelper;
@@ -19,6 +20,13 @@ class TestHelper {
 		$definition = TestHelper::replacePath($definition, $path);
 		$testConfig = Config::load($definition);
 		return $testConfig;
+	}
+	
+	public static function loadConfig($name, $dir = TEST_APPLICATION_DIR) {
+		$dir = FileHelper::trimRootPath($dir);
+		$path = trim(ROOT_DIR . DS . $dir, DS);
+		$baseConfig = @include($path . DS . $name);
+		return $baseConfig;
 	}
 	
 	private static function replacePath($definition, $path) {
