@@ -2,7 +2,6 @@
 
 namespace yii2lab\test\helpers;
 
-use yii\helpers\ArrayHelper;
 use yii2lab\app\domain\helpers\Config;
 use yii2lab\app\domain\helpers\Env;
 use yii2lab\helpers\yii\FileHelper;
@@ -11,13 +10,16 @@ class TestHelper {
 	
 	public static function loadEnvFromPath($path) {
 		$config = require(ROOT_DIR . DS . TEST_APPLICATION_DIR . DS . 'common/config/env.php');
-		$config['config'] = TestHelper::replacePath($config['config'], $path);
+		//print_r($config);exit;
+		$config['app'] = self::replacePath($config['app'], $path);
+		$config['config'] = self::replacePath($config['config'], $path);
+		//print_r($config);exit;
 		return $config;
 	}
 	
 	public static function loadConfigFromPath($path) {
 		$definition = Env::get('config');
-		$definition = TestHelper::replacePath($definition, $path);
+		$definition = self::replacePath($definition, $path);
 		$testConfig = Config::load($definition);
 		return $testConfig;
 	}
@@ -33,13 +35,17 @@ class TestHelper {
 		$path = FileHelper::normalizePath($path);
 		$path = self::trimPath($path);
 		$filters = [];
-		foreach($definition['filters'] as $filter) {
-			$filter = self::filterItem($filter, $path);
-			if($filter) {
-				$filters[] = $filter;
+		foreach(['filters', 'commands'] as $type) {
+			if(!empty($definition[$type])) {
+				foreach($definition[$type] as $filter) {
+					$filter = self::filterItem($filter, $path);
+					if($filter) {
+						$filters[] = $filter;
+					}
+				}
+				$definition[$type] = $filters;
 			}
 		}
-		$definition['filters'] = $filters;
 		return $definition;
 	}
 	
