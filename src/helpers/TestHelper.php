@@ -10,10 +10,8 @@ class TestHelper {
 	
 	public static function loadEnvFromPath($path) {
 		$config = require(ROOT_DIR . DS . TEST_APPLICATION_DIR . DS . 'common/config/env.php');
-		//print_r($config);exit;
 		$config['app'] = self::replacePath($config['app'], $path);
 		$config['config'] = self::replacePath($config['config'], $path);
-		//print_r($config);exit;
 		return $config;
 	}
 	
