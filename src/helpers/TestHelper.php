@@ -26,7 +26,7 @@ class TestHelper {
 	
 	public static function loadConfig($name, $dir = TEST_APPLICATION_DIR) {
 		$dir = FileHelper::trimRootPath($dir);
-		$path = trim(ROOT_DIR . DS . $dir, DS);
+		$path = rtrim(ROOT_DIR . DS . $dir, DS);
 		$baseConfig = @include($path . DS . $name);
 		return $baseConfig;
 	}
