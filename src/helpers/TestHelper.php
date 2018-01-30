@@ -60,6 +60,9 @@ class TestHelper {
 		if(is_string($filter)) {
 			return $filter;
 		}
+		if(!array_key_exists('app', $filter)) {
+			return $filter;
+		}
 		if($filter['app'] == TEST_APPLICATION_DIR . DS . 'console') {
 			return null;
 		}
