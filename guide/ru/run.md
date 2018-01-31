@@ -16,3 +16,22 @@
 	php yii vendor/test/all
 
 Командные файлы находятся здесь `cmd\test`.
+
+Для задания путей тестов, пишем массив алиасов в конфиг домена `vendor`, в сегмент `services.test.aliases`:
+
+```php
+return [
+	'vendor' => [
+		...
+		'services' => [
+			...
+			'test' => [
+				'aliases' => [
+					'@domain/v4/account',
+				],
+			],
+			...
+		],
+	],
+];
+```
