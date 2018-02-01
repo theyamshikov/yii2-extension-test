@@ -29,7 +29,7 @@ return [
 			'traceLevel' => YII_DEBUG ? 3 : 0,
 		],
 		'authManager' => [
-			'class' => 'yii2lab\rbac\rbac\PhpManager',
+			'class' => 'yii2lab\rbac\domain\rbac\PhpManager',
 			'itemFile' => $commonDir . '/data/rbac/items.php',
 			'ruleFile' => $commonDir . '/data/rbac/rules.php',
 			'defaultRoles' => ['rGuest'],
