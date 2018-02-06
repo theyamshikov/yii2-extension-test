@@ -47,11 +47,7 @@ return [
 				],
 			],
 		],
-		'db' => Db::getConfig([
-			'class' => 'yii\db\Connection',
-			'charset' => 'utf8',
-			'enableSchemaCache' => false,
-		], YII_ENV_TEST ? 'test' : 'main'),
+		'db' => Db::getConfig([], YII_ENV_TEST ? 'test' : 'main'),
 		'mailer' => [
 			'class' => 'yii\swiftmailer\Mailer',
 			'viewPath' => $commonDir . '/mail',
