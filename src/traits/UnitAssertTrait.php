@@ -30,7 +30,7 @@ trait UnitAssertTrait
 	}
 	
 	public function assertIsEntity($entity) {
-		expect(BaseEntity::className())->isInstanceOf($entity);
+		expect($entity instanceof BaseEntity)->true();
 	}
 	
 	public function assertUnprocessableEntityHttpException($messages, UnprocessableEntityHttpException $e) {
