@@ -13,7 +13,7 @@ return [
 	'timeZone' => 'UTC',
 	'components' => [
         'user' => [
-			'class' => 'yii2woop\account\domain\web\User',
+			'class' => 'yii2module\account\domain\web\User',
 		],
 		'log' => [
 			'targets' => [
