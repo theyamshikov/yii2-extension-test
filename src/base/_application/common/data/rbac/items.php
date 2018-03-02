@@ -16,7 +16,7 @@ return [
             'rModerator',
             'rDeveloper',
             'oArticlePostManage',
-            'oRestClient.*',
+            'oRestClientAll',
             'oOfflineManage',
             'oLogreaderManage',
             'oGiiManage',
@@ -26,7 +26,7 @@ return [
             'oGuideModify',
             'oRbacManage',
             'oAppConfig',
-            'oBackend.*',
+            'oBackendAll',
         ],
     ],
     'rUser' => [
@@ -53,7 +53,7 @@ return [
         'type' => 1,
         'description' => 'Корневой администратор системы',
         'children' => [
-            'oBackend.*',
+            'oBackendAll',
         ],
     ],
     'oGeoCityManage' => [
@@ -82,7 +82,7 @@ return [
             'oGeoRegionManage',
             'oArticlePostManage',
             'oLangManage',
-            'oBackend.*',
+            'oBackendAll',
         ],
     ],
     'rDeveloper' => [
@@ -91,7 +91,7 @@ return [
         'children' => [
             'oEncryptManage',
             'oVendorManage',
-            'oRestClient.*',
+            'oRestClientAll',
             'oOfflineManage',
             'oLogreaderManage',
             'oGiiManage',
@@ -100,7 +100,7 @@ return [
             'oGuideModify',
             'oRbacManage',
             'oAppConfig',
-            'oBackend.*',
+            'oBackendAll',
         ],
     ],
     'oArticlePostManage' => [
@@ -111,7 +111,7 @@ return [
         'type' => 2,
         'description' => 'Удаление статьи',
     ],
-    'oRestClient.*' => [
+    'oRestClientAll' => [
         'type' => 2,
         'description' => 'Доступ к REST-клиенту',
     ],
@@ -152,7 +152,7 @@ return [
         'type' => 2,
         'description' => 'Вносить изменения в базовые конфигурации',
     ],
-    'oBackend.*' => [
+    'oBackendAll' => [
         'type' => 2,
         'description' => 'Доступ в админ панель',
     ],
