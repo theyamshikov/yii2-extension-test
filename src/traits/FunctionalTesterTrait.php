@@ -3,7 +3,7 @@
 namespace yii2lab\test\traits;
 
 use Yii;
-use yii2lab\test\Util\HttpHeader;
+use yii2lab\misc\enums\HttpHeaderEnum;
 use yii2mod\helpers\ArrayHelper;
 use yii2lab\test\models\Login;
 use Codeception\Util\HttpCode;
@@ -41,8 +41,8 @@ trait FunctionalTesterTrait
 		foreach($values as $name => $value) {
 			$this->seeHttpHeader($name, $value);
 		}
-		$total_count = ArrayHelper::getValue($values, HttpHeader::TOTAL_COUNT);
-		$per_page = ArrayHelper::getValue($values, HttpHeader::PER_PAGE, 20);
+		$total_count = ArrayHelper::getValue($values, HttpHeaderEnum::TOTAL_COUNT);
+		$per_page = ArrayHelper::getValue($values, HttpHeaderEnum::PER_PAGE, 20);
 		if(empty($count)) {
 			return;
 		}
