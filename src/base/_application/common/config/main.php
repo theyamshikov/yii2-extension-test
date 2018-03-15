@@ -48,6 +48,10 @@ return [
 			],
 		],
 		'db' => Db::getConfig([], YII_ENV_TEST ? 'test' : 'main'),
+		'filedb' => [
+			'class' => 'yii2tech\filedb\Connection',
+			'path' => '@common/data',
+		],
 		'mailer' => [
 			'class' => 'yii\swiftmailer\Mailer',
 			'viewPath' => $commonDir . '/mail',
