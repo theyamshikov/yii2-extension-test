@@ -47,7 +47,7 @@ return [
 				],
 			],
 		],
-		'db' => Db::getConfig([], YII_ENV_TEST ? 'test' : 'main'),
+		'db' => Db::getConfig(),
 		'filedb' => [
 			'class' => 'yii2tech\filedb\Connection',
 			'path' => '@common/data',
