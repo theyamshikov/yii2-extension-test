@@ -142,7 +142,7 @@ trait FunctionalTesterTrait
 			return false;
 		}
 		
-		$user = $loginList = Yii::$app->account->test->oneByLogin($login);
+		$user = $loginList = Yii::$domain->account->test->oneByLogin($login);
 		$password = !empty($password) ?  $password: $user->password;
 		
 		$this->sendPOST('auth', [
@@ -159,7 +159,7 @@ trait FunctionalTesterTrait
 	public function authAsRole($role = null) {
 		$login = null;
 		if($role) {
-			$user = $loginList = Yii::$app->account->test->getOneByRole($role);
+			$user = $loginList = Yii::$domain->account->test->getOneByRole($role);
 			$login = $user->login;
 		}
 		return self::auth($login);
