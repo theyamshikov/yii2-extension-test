@@ -23,7 +23,7 @@ $forceConfig = [
 	],
 	'domain' => [
 		'driver' => [
-			'primary' => 'disc',
+			'primary' => 'filedb',
 			'slave' => 'ar',
 		],
 	],
