@@ -50,7 +50,7 @@ return [
 		'db' => Db::getConfig(),
 		'filedb' => [
 			'class' => 'yii2tech\filedb\Connection',
-			'path' => '@yii2lab/applicationTemplate/common/fixtures/data',
+			'path' => '@yii2lab/applicationTemplate/common/data',
 		],
 		'mailer' => [
 			'class' => 'yii\swiftmailer\Mailer',
