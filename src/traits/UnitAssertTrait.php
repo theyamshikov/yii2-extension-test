@@ -3,12 +3,21 @@
 namespace yii2lab\test\traits;
 
 use PHPUnit\Framework\Constraint\IsType;
+use Throwable;
 use yii\helpers\ArrayHelper;
 use yii2lab\domain\BaseEntity;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 
 trait UnitAssertTrait
 {
+	
+	public function assertExceptionMessage(string $expect, Throwable $exception) {
+		$this->assertEquals($expect, $exception->getMessage());
+	}
+	
+	public function assertExceptionCode(int $expect, Throwable $exception) {
+		$this->assertEquals($expect, $exception->getCode());
+	}
 	
 	public function assertEntity(array $expect, BaseEntity $entity) {
 		$this->assertArraySubset($expect, $entity->toArray());
