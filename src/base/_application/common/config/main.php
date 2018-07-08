@@ -30,9 +30,9 @@ return [
 		],
 		'authManager' => [
 			'class' => 'yii2lab\rbac\domain\rbac\PhpManager',
-			'itemFile' => $commonDir . '/data/rbac/items.php',
-			'ruleFile' => $commonDir . '/data/rbac/rules.php',
-			'defaultRoles' => ['rGuest'],
+			//'itemFile' => $commonDir . '/data/rbac/items.php',
+			//'ruleFile' => $commonDir . '/data/rbac/rules.php',
+			//'defaultRoles' => ['rGuest'],
 		],
 		'cache' => [
 			'class' => 'yii\caching\ArrayCache',
