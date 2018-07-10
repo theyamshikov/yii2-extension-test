@@ -7,9 +7,18 @@ use Throwable;
 use yii\helpers\ArrayHelper;
 use yii2lab\domain\BaseEntity;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
+use yii2module\error\domain\helpers\UnProcessibleHelper;
 
 trait UnitAssertTrait
 {
+	
+	public function assertExceptionMessage1(array $expect, Throwable $exception) {
+		$array = UnProcessibleHelper::assoc2indexed($exception->getErrors());
+		//;
+		//$object =  json_decode($exception->getMessage());
+		//$array = ArrayHelper::toArray($object);
+		$this->assertEquals($expect, $array);
+	}
 	
 	public function assertExceptionMessage(string $expect, Throwable $exception) {
 		$this->assertEquals($expect, $exception->getMessage());
