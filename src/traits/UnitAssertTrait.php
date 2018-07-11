@@ -12,11 +12,8 @@ use yii2module\error\domain\helpers\UnProcessibleHelper;
 trait UnitAssertTrait
 {
 	
-	public function assertExceptionMessage1(array $expect, Throwable $exception) {
+	public function assertUnprocessableEntityExceptionMessage(array $expect, UnprocessableEntityHttpException $exception) {
 		$array = UnProcessibleHelper::assoc2indexed($exception->getErrors());
-		//;
-		//$object =  json_decode($exception->getMessage());
-		//$array = ArrayHelper::toArray($object);
 		$this->assertEquals($expect, $array);
 	}
 	
