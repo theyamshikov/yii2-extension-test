@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestResult;
  *
  * @package yii2lab\test\Test
  *
- * @property \yii2lab\test\base\_support\RestTester $tester
+ * @property \RestTester $tester
  */
 class Rest extends \Codeception\Test\Unit {
 	
