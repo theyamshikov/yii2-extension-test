@@ -30,10 +30,11 @@ class Rest extends \Codeception\Test\Unit {
 	protected function url($uri = null) {
 		$baseUrl = env('url.api');
 		$baseUrl = trim($baseUrl, SL);
+		$url = $baseUrl . SL . 'index-test.php';
 		if(!empty($uri)) {
-			$baseUrl .= SL . $uri;
+			$url .= SL . $uri;
 		}
-		return $baseUrl;
+		return $url;
 	}
 	
 	/**
