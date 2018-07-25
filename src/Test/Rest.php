@@ -3,6 +3,7 @@
 namespace yii2lab\test\Test;
 
 use PHPUnit\Framework\TestResult;
+use yii2lab\app\domain\helpers\EnvService;
 
 // todo: autoreplace "use PHPUnit\Framework\TestResult;" to "use yii2lab\test\Test\Unit;"
 
@@ -28,9 +29,7 @@ class Rest extends \Codeception\Test\Unit {
 	}
 	
 	protected function url($uri = null) {
-		$baseUrl = env('url.api');
-		$baseUrl = trim($baseUrl, SL);
-		$url = $baseUrl . SL . 'index-test.php';
+		$url = EnvService::getUrl('api', 'index-test.php');
 		if(!empty($uri)) {
 			$url .= SL . $uri;
 		}
