@@ -17,11 +17,11 @@ $config = [
 		'db' => [
 			'main' => [
 				'driver' => 'sqlite',
-				'dsn' => 'sqlite:@yii2lab/test/db/test.db',
+				'dbname' => '@yii2lab/test/db/test.db',
 			],
 			'test' => [
 				'driver' => 'sqlite',
-				'dsn' => 'sqlite:@yii2lab/test/db/test.db',
+				'dbname' => '@yii2lab/test/db/test.db',
 			],
 		],
 	],
