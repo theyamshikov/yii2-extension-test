@@ -13,6 +13,14 @@ $config = [
 		'frontend' => 'bBXEWnH5ERCG7SF3wxtbotYxq3W-Op7B',
 		'backend' => 'zbfqVR5PhdO3E8Xi7DB4aoxmxSstJ6aI',
 	],
+	'servers' => [
+		'db' => [
+			'test' => [
+				'driver' => null,
+				'dsn' => 'sqlite:@yii2lab/test/db/test.db',
+			],
+		],
+	],
 ];
 
 $forceConfig = [

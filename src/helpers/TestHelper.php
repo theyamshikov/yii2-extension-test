@@ -8,6 +8,16 @@ use yii2lab\helpers\yii\FileHelper;
 
 class TestHelper {
 	
+	public static function copySqlite($dir) {
+		
+		$sourceFile = $dir . '/db/test.db';
+		$targetFile = ROOT_DIR . '/common/runtime/sqlite/test-package.db';
+		if(!FileHelper::has($sourceFile)) {
+			return;
+		}
+		FileHelper::copy($sourceFile, $targetFile);
+	}
+	
 	public static function loadEnvFromPath($path) {
 		$config = require(ROOT_DIR . DS . TEST_APPLICATION_DIR . DS . 'common/config/env.php');
 		$config['app'] = self::replacePath($config['app'], $path);
