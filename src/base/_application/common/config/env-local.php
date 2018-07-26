@@ -15,8 +15,12 @@ $config = [
 	],
 	'servers' => [
 		'db' => [
+			'main' => [
+				'driver' => 'sqlite',
+				'dsn' => 'sqlite:@yii2lab/test/db/test.db',
+			],
 			'test' => [
-				'driver' => null,
+				'driver' => 'sqlite',
 				'dsn' => 'sqlite:@yii2lab/test/db/test.db',
 			],
 		],
