@@ -1,6 +1,5 @@
 <?php
 
-use yii2lab\app\domain\helpers\Db;
 use yii2module\lang\domain\enums\LanguageEnum;
 
 $commonDir = '@yii2lab/test/base/_application/common';
@@ -47,7 +46,7 @@ return [
 				],
 			],
 		],
-		'db' => Db::getConfig(),
+		'db' => 'yii2lab\db\domain\db\Connection',
 		'filedb' => [
 			'class' => 'yii2tech\filedb\Connection',
 			'path' => '@yii2lab/applicationTemplate/common/data',
