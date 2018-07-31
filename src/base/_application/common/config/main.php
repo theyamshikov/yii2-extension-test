@@ -18,39 +18,26 @@ return [
 			'targets' => [
 				[
 					'class' => 'yii\log\FileTarget',
-					//'levels' => ['error', 'warning'],
+					'levels' => ['error', 'warning'],
 					'except' => [
 						'yii\web\HttpException:*',
 						YII_ENV_TEST ? 'yii2module\lang\domain\i18n\PhpMessageSource::loadMessages' : null,
 					],
 				],
 			],
-			'traceLevel' => YII_DEBUG ? 3 : 0,
+			'traceLevel' => 0,
 		],
-		'authManager' => [
-			'class' => 'yii2lab\rbac\domain\rbac\PhpManager',
-			//'itemFile' => $commonDir . '/data/rbac/items.php',
-			//'ruleFile' => $commonDir . '/data/rbac/rules.php',
-			//'defaultRoles' => ['rGuest'],
-		],
+		'authManager' => 'yii2lab\rbac\domain\rbac\PhpManager',
 		'cache' => [
 			'class' => 'yii\caching\ArrayCache',
 		],
 		'i18n' => [
 			'class' => 'yii2module\lang\domain\i18n\I18N',
-			'translations' => [
-				'*' => [
-					'class' => 'yii2module\lang\domain\i18n\PhpMessageSource',
-					'basePath' => $commonDir . '/messages',
-					'on missingTranslation' => ['yii2module\lang\domain\handlers\TranslationEventHandler', 'handleMissingTranslation'],
-				],
+			'aliases' => [
+				'*' => '@common/messages',
 			],
 		],
 		'db' => 'yii2lab\db\domain\db\Connection',
-		'filedb' => [
-			'class' => 'yii2tech\filedb\Connection',
-			'path' => '@yii2lab/applicationTemplate/common/data',
-		],
 		'mailer' => [
 			'class' => 'yii\swiftmailer\Mailer',
 			'viewPath' => $commonDir . '/mail',
