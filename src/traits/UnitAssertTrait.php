@@ -48,7 +48,7 @@ trait UnitAssertTrait
 	}
 	
 	public function assertIsEntity($entity) {
-		expect($entity instanceof BaseEntity)->true();
+		$this->tester->assertTrue($entity instanceof BaseEntity);
 	}
 	
 	public function assertUnprocessableEntityHttpException($messages, UnprocessableEntityHttpException $e) {
@@ -56,11 +56,11 @@ trait UnitAssertTrait
 		foreach($errors as $error) {
 			$field = $error['field'];
 			if(isset($messages[$field])) {
-				expect($messages[$field])->equals($error['message']);
+				$this->assertEquals($messages[$field], $error['message']);
 				return;
 			}
 		}
-		expect(false)->true();
+		$this->tester->assertTrue(false);
 	}
 	
 	public function assertEntityFormat(array $expect, BaseEntity $entity, $isStrict = true) {

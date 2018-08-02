@@ -21,8 +21,8 @@ trait FunctionalTesterTrait
 	
 	private function seeItemValue($item, $values) {
 		foreach ($values as $name => $value) {
-			expect(isset($item[$name]))->true();
-			expect($item[$name])->equals($value);
+			$this->tester->assertTrue(isset($item[$name]));
+			$this->assertEquals($item[$name], $value);
 		}
 	}
 	
@@ -56,7 +56,7 @@ trait FunctionalTesterTrait
 	public function seeListCount($value) {
 		$body = $this->getResponseBody();
 		$count = count($body);
-		expect($value)->equals($count);
+		$this->assertEquals($value, $count);
 	}
 	
 	public function seeSort($first, $last, $key = null) {
@@ -74,7 +74,7 @@ trait FunctionalTesterTrait
 			$item = $body[$id];
 		}
 		$value = ArrayHelper::getValue($item, $key);
-		expect($expect)->equals($value);
+		$this->assertEquals($expect, $value);
 	}
 	
 	public function getResponseBody() {
@@ -86,12 +86,12 @@ trait FunctionalTesterTrait
 	public function seeBody($expected = null, $existsOnly = false) {
 		$response = $this->getResponseBody();
 		if(!$existsOnly) {
-			expect($response)->equals($expected);
+			$this->assertEquals($response, $expected);
 		} else {
 			if(is_array($expected)) {
 				foreach($expected as $key => $value) {
 					if(array_key_exists($key, $response)) {
-						expect($response[$key])->equals($expected[$key]);
+						$this->assertEquals($response[$key], $expected[$key]);
 					}
 				}
 			}
@@ -112,9 +112,9 @@ trait FunctionalTesterTrait
 
 	protected function fieldsOnly($expected, $item) {
 		$diff = array_diff(array_keys($item), $expected);
-		expect($diff)->equals([]);
+		$this->assertEquals($diff, []);
 		$diff = array_diff($expected, array_keys($item));
-		expect($diff)->equals([]);
+		$this->assertEquals($diff, []);
 	}
 
 	public function seeResponseJsonFieldsOnly($fields) {
