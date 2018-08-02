@@ -30,6 +30,9 @@ trait UnitAssertTrait
 	}
 	
 	public function assertCollection(array $expect, array $collection) {
+		if(empty($collection) && empty($expect)) {
+			return;
+		}
 		foreach($expect as $key => $expectItem) {
 			$entity = $collection[$key];
 			$expectItem = ArrayHelper::toArray($expectItem);
