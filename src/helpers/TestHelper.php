@@ -49,6 +49,9 @@ class TestHelper {
 			if(!empty($definition[$type])) {
 				foreach($definition[$type] as $filter) {
 					$filter = self::filterItem($filter, $path);
+					if(!empty($filter['filters'])) {
+                        $filter = self::replacePath($filter, $path);
+                    }
 					if($filter) {
 						$filters[] = $filter;
 					}

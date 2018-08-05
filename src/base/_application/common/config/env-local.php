@@ -9,6 +9,9 @@ $config = [
 		'backend' => 'http://admin.example.com/',
 		'api' => 'http://api.example.com/',
 	],
+    /*'aliases' => [
+        '@common/data' => '@yii2lab/test/base/_application/common/data',
+    ],*/
 	'cookieValidationKey' => [
 		'frontend' => 'bBXEWnH5ERCG7SF3wxtbotYxq3W-Op7B',
 		'backend' => 'zbfqVR5PhdO3E8Xi7DB4aoxmxSstJ6aI',
@@ -24,6 +27,9 @@ $config = [
 				'dbname' => '@yii2lab/test/db/test.db',
 			],
 		],
+        'filedb' => [
+            'path' => '@yii2lab/test/base/_application/common/data',
+        ],
 	],
 ];
 

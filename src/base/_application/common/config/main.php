@@ -34,7 +34,7 @@ return [
 		'i18n' => [
 			'class' => 'yii2module\lang\domain\i18n\I18N',
 			'aliases' => [
-				'*' => '@common/messages',
+				'*' => '@yii2lab/test/base/_application/common/messages',
 			],
 		],
 		'db' => 'yii2lab\db\domain\db\Connection',
