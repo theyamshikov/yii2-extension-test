@@ -123,7 +123,7 @@ return [
 				'filters' => [
 					[
 						'class' => LoadDomainConfig::class,
-						'app' => COMMON,
+						'app' => $basePath . COMMON,
 						'name' => 'domains',
 						'withLocal' => true,
 					],
