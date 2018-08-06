@@ -6,6 +6,7 @@ use PHPUnit\Framework\Constraint\IsType;
 use Throwable;
 use yii\helpers\ArrayHelper;
 use yii2lab\domain\BaseEntity;
+use yii2lab\domain\data\EntityCollection;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii2module\error\domain\helpers\UnProcessibleHelper;
 
@@ -40,15 +41,15 @@ trait UnitAssertTrait
 		}
 	}
 	
-	public function assertIsCollection(array $collection) {
-		$this->assertInternalType(isType::TYPE_ARRAY, $collection);
+	public function assertIsCollection(EntityCollection $collection) {
+		//$this->assertInternalType(isType::TYPE_ARRAY, $collection);
 		foreach($collection as $entity) {
 			$this->assertIsEntity($entity);
 		}
 	}
 	
-	public function assertIsEntity($entity) {
-		$this->tester->assertTrue($entity instanceof BaseEntity);
+	public function assertIsEntity($entity, $class = BaseEntity::class) {
+		$this->assertTrue($entity instanceof $class);
 	}
 	
 	public function assertUnprocessableEntityHttpException($messages, UnprocessableEntityHttpException $e) {
@@ -60,7 +61,7 @@ trait UnitAssertTrait
 				return;
 			}
 		}
-		$this->tester->assertTrue(false);
+		$this->assertTrue(false);
 	}
 	
 	public function assertEntityFormat(array $expect, BaseEntity $entity, $isStrict = true) {
@@ -75,7 +76,7 @@ trait UnitAssertTrait
 		}
 	}
 	
-	public function assertCollectionFormat(array $expect, array $collection, $isStrict = true) {
+	public function assertCollectionFormat(array $expect, $collection, $isStrict = true) {
 		$this->assertIsCollection($collection);
 		foreach($collection as $entity) {
 			$this->assertEntityFormat($expect, $entity, $isStrict);
