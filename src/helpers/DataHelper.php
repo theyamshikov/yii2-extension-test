@@ -11,7 +11,8 @@ use yii2lab\store\Store;
 class DataHelper {
 	
 	public static function loadForTest($package, $method, $defaultData = null) {
-		$method = basename($method);
+		//$method = basename($method);
+		$method = str_replace('tests\\', '', $method);
 		$path = str_replace('::', SL, $method);
 		$fileName = '_expect' . SL . $path . '.json';
 		return DataHelper::load($package, $fileName, $defaultData);
