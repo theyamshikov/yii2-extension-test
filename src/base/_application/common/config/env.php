@@ -25,7 +25,7 @@ return [
 			],
 			[
 				'class' => ApiVersion::class,
-				'isEnabled' => APP == API,
+				'isEnabled' => APP == API || APP == CONSOLE,
 			],
 		],
 	],
