@@ -10,12 +10,12 @@ use yii2lab\store\Store;
 
 class DataHelper {
 	
-	public static function loadForTest($package, $method, $defaultData = null) {
+	public static function loadForTest($package, $method, $defaultData = null, $format = 'json') {
 		//$method = basename($method);
 		$method = str_replace('tests\\', '', $method);
 		$path = str_replace('::', SL, $method);
-		$fileName = '_expect' . SL . $path . '.json';
-		return DataHelper::load($package, $fileName, $defaultData);
+		$fileName = '_expect' . SL . $path . DOT . $format;
+		return self::load($package, $fileName, $defaultData);
 	}
 	
 	public static function load($packageName, $filename, $defaultData = null) {
