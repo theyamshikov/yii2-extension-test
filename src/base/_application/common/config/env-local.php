@@ -27,6 +27,14 @@ $config = [
 				'dbname' => '@yii2lab/test/db/test.db',
 			],
 		],
+		'static' => [
+			'publicPath' => '@frontend/web/',
+			'domain' => 'https://static.example.com/',
+			'driver' => 'local',
+			'connection' => [
+				'path' => '@frontend/web',
+			],
+		],
         'filedb' => [
             'path' => '@yii2lab/test/base/_application/common/data',
         ],
@@ -47,5 +55,5 @@ $forceConfig = [
 	],
 ];
 
-$appConfig = TestHelper::loadConfig('common/config/env-local.php', '');
-return ArrayHelper::merge($config, $appConfig, $forceConfig);
+//$appConfig = TestHelper::loadConfig('common/config/env-local.php', '');
+return ArrayHelper::merge($config, $forceConfig);
