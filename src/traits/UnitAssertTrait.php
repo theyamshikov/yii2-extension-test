@@ -41,10 +41,10 @@ trait UnitAssertTrait
 		}
 	}
 	
-	public function assertIsCollection(EntityCollection $collection) {
+	public function assertIsCollection(EntityCollection $collection, $class = BaseEntity::class) {
 		//$this->assertInternalType(isType::TYPE_ARRAY, $collection);
 		foreach($collection as $entity) {
-			$this->assertIsEntity($entity);
+			$this->assertIsEntity($entity, $class);
 		}
 	}
 	
