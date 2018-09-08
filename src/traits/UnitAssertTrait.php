@@ -21,7 +21,11 @@ trait UnitAssertTrait
 	public function assertExceptionMessage(string $expect, Throwable $exception) {
 		$this->assertEquals($expect, $exception->getMessage());
 	}
-	
+
+    public function assertExceptionMessageRegexp(string $expect, Throwable $exception) {
+        $this->assertRegExp($expect, $exception->getMessage());
+    }
+
 	public function assertExceptionCode(int $expect, Throwable $exception) {
 		$this->assertEquals($expect, $exception->getCode());
 	}
