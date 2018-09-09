@@ -4,7 +4,7 @@ namespace yii2lab\test\helpers;
 
 use yii2lab\app\domain\helpers\Config;
 use yii2lab\app\domain\helpers\Env;
-use yii2lab\helpers\yii\FileHelper;
+use yii2lab\extension\yii\helpers\FileHelper;
 
 class TestHelper {
 	
