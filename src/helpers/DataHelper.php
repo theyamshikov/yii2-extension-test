@@ -6,7 +6,7 @@ use yii\helpers\ArrayHelper;
 use yii2lab\domain\base\BaseDto;
 use yii2lab\domain\BaseEntity;
 use yii2lab\helpers\yii\FileHelper;
-use yii2lab\store\Store;
+use yii2lab\extension\store\Store;
 
 class DataHelper {
 	
