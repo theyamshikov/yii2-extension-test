@@ -30,7 +30,7 @@ class TestHelper {
 	public static function loadConfigFromPath($path) {
 		$definition = Env::get('config');
 		$definition = self::replacePath($definition, $path);
-		$testConfig = Config::load($definition);
+		$testConfig = Config::loadData($definition);
 		return $testConfig;
 	}
 	
