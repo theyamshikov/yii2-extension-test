@@ -6,6 +6,7 @@ use yii2lab\app\domain\filters\config\LoadConfig;
 use yii2lab\app\domain\filters\config\LoadModuleConfig;
 use yii2lab\domain\filters\LoadDomainConfig;
 use yii2lab\app\domain\enums\YiiEnvEnum;
+use yii2lab\app\domain\filters\config\LoadRouteConfig;
 
 $basePath = TEST_APPLICATION_DIR . DS;
 
@@ -67,21 +68,19 @@ return [
 				'name' => 'modules',
 				'withLocal' => true,
 			],
-			
-			[
-				'class' => LoadConfig::class,
-				'app' => $basePath . COMMON,
-				'name' => 'routes',
-				'withLocal' => true,
-				'assignTo' => 'components.urlManager.rules',
-			],
-			[
-				'class' => LoadConfig::class,
-				'app' => $basePath . APP,
-				'name' => 'routes',
-				'withLocal' => true,
-				'assignTo' => 'components.urlManager.rules',
-			],
+
+            [
+                'class' => LoadRouteConfig::class,
+                'app' => $basePath . COMMON,
+                'name' => 'routes',
+                'withLocal' => true,
+            ],
+            [
+                'class' => LoadRouteConfig::class,
+                'app' => $basePath . APP,
+                'name' => 'routes',
+                'withLocal' => true,
+            ],
 			
 			[
 				'class' => LoadConfig::class,
