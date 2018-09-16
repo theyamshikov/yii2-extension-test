@@ -27,6 +27,17 @@ return [
 				'class' => ApiVersion::class,
 				'isEnabled' => APP == API || APP == CONSOLE,
 			],
+            [
+                'class' => 'yii2lab\domain\filters\DefineDomainLocator',
+                'filters' => [
+                    [
+                        'class' => LoadDomainConfig::class,
+                        'app' => $basePath . COMMON,
+                        'name' => 'domains',
+                        'withLocal' => true,
+                    ],
+                ],
+            ],
 		],
 	],
 	'config' => [
@@ -118,17 +129,6 @@ return [
 			'yii2lab\app\domain\filters\config\SetAppId',
 			'yii2lab\app\domain\filters\config\SetPath',
 			'yii2module\offline\domain\filters\IsOffline',
-			[
-				'class' => 'yii2lab\domain\filters\DefineDomainLocator',
-				'filters' => [
-					[
-						'class' => LoadDomainConfig::class,
-						'app' => $basePath . COMMON,
-						'name' => 'domains',
-						'withLocal' => true,
-					],
-				],
-			],
 		],
 	],
 ];
