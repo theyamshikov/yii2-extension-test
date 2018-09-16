@@ -10,9 +10,9 @@ use yii2lab\app\domain\enums\YiiEnvEnum;
 $basePath = TEST_APPLICATION_DIR . DS;
 
 return [
-	'yii' => [
+	/*'yii' => [
 		'class' => VENDOR_DIR . DS . 'yii2lab/yii2-domain/src/yii2' . DS . 'Yii.php',
-	],
+	],*/
 	'app' => [
 		'commands' => [
 			[
