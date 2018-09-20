@@ -34,7 +34,7 @@ trait UnitAssertTrait
 		$this->assertArraySubset($expect, $entity->toArray());
 	}
 	
-	public function assertCollection(array $expect, array $collection) {
+	public function assertCollection(array $expect, array $collection, $isStrict = false) {
 		if(empty($collection) && empty($expect)) {
 			return;
 		}
@@ -42,6 +42,9 @@ trait UnitAssertTrait
 			$entity = $collection[$key];
 			$expectItem = ArrayHelper::toArray($expectItem);
 			$this->assertEntity($expectItem, $entity);
+		}
+		if($isStrict) {
+			$this->assertCount(count($expect), $collection);
 		}
 	}
 	
