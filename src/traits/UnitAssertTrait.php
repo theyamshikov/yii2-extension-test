@@ -30,8 +30,12 @@ trait UnitAssertTrait
 		$this->assertEquals($expect, $exception->getCode());
 	}
 	
-	public function assertEntity(array $expect, BaseEntity $entity) {
-		$this->assertArraySubset($expect, $entity->toArray());
+	public function assertEntity(array $expect, BaseEntity $entity, $isStrict = false) {
+		if($isStrict) {
+			$this->assertEquals($expect, $entity->toArray());
+		} else {
+			$this->assertArraySubset($expect, $entity->toArray());
+		}
 	}
 	
 	public function assertCollection(array $expect, array $collection, $isStrict = false) {
