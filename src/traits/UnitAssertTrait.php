@@ -2,8 +2,9 @@
 
 namespace yii2lab\test\traits;
 
-use PHPUnit\Framework\Constraint\IsType;
 use Throwable;
+use yii\base\InvalidArgumentException;
+use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
 use yii2lab\domain\BaseEntity;
 use yii2lab\domain\data\EntityCollection;
@@ -12,6 +13,17 @@ use yii2module\error\domain\helpers\UnProcessibleHelper;
 
 trait UnitAssertTrait
 {
+	
+	public function assertPagination(array $expect, Pagination $pagination) {
+		$p = [
+			'offset' => $pagination->offset,
+			'page' => $pagination->page,
+			'limit' => $pagination->limit,
+			'pageSize' => $pagination->pageSize,
+		];
+		
+		$this->assertArraySubset($expect, $p);
+	}
 	
 	public function assertUnprocessableEntityExceptionMessage(array $expect, UnprocessableEntityHttpException $exception) {
 		$array = UnProcessibleHelper::assoc2indexed($exception->getErrors());
@@ -35,6 +47,21 @@ trait UnitAssertTrait
 			$this->assertEquals($expect, $entity->toArray());
 		} else {
 			$this->assertArraySubset($expect, $entity->toArray());
+		}
+	}
+	
+	public function assertCollectionByFieldEquals(array $expect, array $collection, $count = null) {
+		if(is_integer($count)) {
+			$this->assertCount($count, $collection);
+		}
+		if(empty($collection)) {
+			return;
+		}
+		foreach($collection as $entity) {
+			foreach($expect as $name => $value) {
+				$isEqual = $entity->{$name} == $value;
+				$this->assertTrue($isEqual);
+			}
 		}
 	}
 	
