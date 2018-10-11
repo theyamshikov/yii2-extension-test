@@ -25,7 +25,7 @@ public function testAuthenticationBadPassword()
 {
 	try {
 		Yii::$app->account->auth->authentication(LoginEnum::LOGIN_ADMIN, LoginEnum::PASSWORD_INCORRECT);
-		$this->tester->assertTrue(false);
+		$this->tester->assertBad();
 	} catch(UnprocessableEntityHttpException $e) {
 		$this->tester->assertUnprocessableEntityHttpException(['password' => 'Incorrect login or password'], $e);
 	}
@@ -40,7 +40,7 @@ public function testAuthenticationByBadToken()
 	try {
 		/** @var LoginEntity $entity */
 		Yii::$app->account->auth->authenticationByToken(LoginEnum::TOKEN_NOT_INCORRECT);
-		$this->tester->assertTrue(false);
+		$this->tester->assertBad();
 	} catch(UnauthorizedHttpException $e) {
 		$this->tester->assertTrue(true);
 	}

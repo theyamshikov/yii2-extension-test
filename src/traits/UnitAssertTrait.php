@@ -3,7 +3,6 @@
 namespace yii2lab\test\traits;
 
 use Throwable;
-use yii\base\InvalidArgumentException;
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
 use yii2lab\domain\BaseEntity;
@@ -13,6 +12,11 @@ use yii2module\error\domain\helpers\UnProcessibleHelper;
 
 trait UnitAssertTrait
 {
+	
+	public function assertBad($data = true) {
+		//$this->assertEmpty($data);
+		$this->assertTrue(false);
+	}
 	
 	public function assertPagination(array $expect, Pagination $pagination) {
 		$p = [
