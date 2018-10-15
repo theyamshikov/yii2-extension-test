@@ -13,8 +13,31 @@ use yii2module\error\domain\helpers\UnProcessibleHelper;
 trait UnitAssertTrait
 {
 	
-	public function assertBad($data = true) {
-		//$this->assertEmpty($data);
+	
+	
+	public function assertBase64String($actual) {
+		$this->assertStringFormat('A-Za-z0-9+/=', $actual);
+	}
+	
+	public function assertHexString($actual) {
+		$this->assertStringFormat('a-f0-9', $actual);
+	}
+	
+	public function assertStringLength($length, $actual) {
+		$lengthRange = ArrayHelper::toArray($length);
+		$lengthExp = implode(',', $lengthRange);
+		$this->assertRegExp('#^[\s\S]{' . $lengthExp . '}$#', $actual);
+	}
+	
+	public function assertStringFormat($charExp, $actual) {
+		$this->assertRegExp('#^[' . $charExp . ']+$#', $actual);
+	}
+	
+	public function assertNice() {
+		$this->assertTrue(true);
+	}
+	
+	public function assertBad() {
 		$this->assertTrue(false);
 	}
 	
