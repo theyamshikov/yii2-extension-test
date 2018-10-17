@@ -8,6 +8,7 @@ use yii\helpers\ArrayHelper;
 use yii2lab\domain\BaseEntity;
 use yii2lab\domain\data\EntityCollection;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
+use yii2lab\extension\common\enums\RegexpPatternEnum;
 use yii2module\error\domain\helpers\UnProcessibleHelper;
 
 trait UnitAssertTrait
@@ -16,11 +17,11 @@ trait UnitAssertTrait
 	
 	
 	public function assertBase64String($actual) {
-		$this->assertStringFormat('A-Za-z0-9+/=', $actual);
+		$this->assertRegExp(RegexpPatternEnum::BASE_64_REQUIRED, $actual);
 	}
 	
 	public function assertHexString($actual) {
-		$this->assertStringFormat('a-f0-9', $actual);
+		$this->assertRegExp(RegexpPatternEnum::HEX_REQUIRED, $actual);
 	}
 	
 	public function assertStringLength($length, $actual) {
