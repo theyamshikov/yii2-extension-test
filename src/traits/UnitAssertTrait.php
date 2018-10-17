@@ -9,11 +9,16 @@ use yii2lab\domain\BaseEntity;
 use yii2lab\domain\data\EntityCollection;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii2lab\extension\common\enums\RegexpPatternEnum;
+use yii2lab\extension\common\helpers\UrlHelper;
 use yii2module\error\domain\helpers\UnProcessibleHelper;
 
 trait UnitAssertTrait
 {
 	
+	public function assertUrl(array $expected, $actual) {
+		$parsedUrl = UrlHelper::parse($actual);
+		$this->assertArraySubset($expected, $parsedUrl);
+	}
 	
 	
 	public function assertBase64String($actual) {
