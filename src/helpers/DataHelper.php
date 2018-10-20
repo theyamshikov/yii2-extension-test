@@ -32,7 +32,7 @@ class DataHelper {
 		return $configExpect;
 	}
 	
-	public static function save($packageName, $filename, $data) {
+	private static function save($packageName, $filename, $data) {
 		$driver = FileHelper::fileExt($filename);
 		$store = new Store($driver);
 		$store->save(self::getDataFilename($packageName, $filename), $data);
