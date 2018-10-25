@@ -43,7 +43,7 @@ trait UnitAssertTrait
 		$this->assertTrue(true);
 	}
 	
-	public function assertBad() {
+	public function assertBad($fakeParam = null) {
 		$this->assertTrue(false);
 	}
 	
