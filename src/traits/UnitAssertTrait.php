@@ -137,8 +137,8 @@ trait UnitAssertTrait
 	
 	public function assertEntityFormat(array $expect, BaseEntity $entity, $isStrict = true) {
 		foreach($expect as $field => $type) {
-			if($isStrict) {
-				expect($entity)->hasAttribute($field);
+			if($isStrict && !$entity->hasProperty($field)) {
+				$this->assertTrue(false, 'Attribute not exists in entity!');
 			}
 			if($isStrict || property_exists($entity, $field)) {
 				$value = $entity->{$field};
