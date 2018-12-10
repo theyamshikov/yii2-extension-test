@@ -75,11 +75,22 @@ trait UnitAssertTrait
 		$this->assertEquals($expect, $exception->getCode());
 	}
 	
+	private function normalizeArrayForNewLines(array $data) {
+		foreach($data as &$item) {
+			if(is_string($item)) {
+				$item = str_replace(["\r\n", "\n\r", "\r"], "\n", $item);
+			}
+		}
+		return $data;
+	}
+	
 	public function assertEntity(array $expect, BaseEntity $entity, $isStrict = false) {
+		$expect = $this->normalizeArrayForNewLines($expect);
+		$entityData = $this->normalizeArrayForNewLines($entity->toArray());
 		if($isStrict) {
-			$this->assertEquals($expect, $entity->toArray());
+			$this->assertEquals($expect, $entityData);
 		} else {
-			$this->assertArraySubset($expect, $entity->toArray());
+			$this->assertArraySubset($expect, $entityData);
 		}
 	}
 	
