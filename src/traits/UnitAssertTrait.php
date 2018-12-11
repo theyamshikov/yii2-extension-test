@@ -75,10 +75,13 @@ trait UnitAssertTrait
 		$this->assertEquals($expect, $exception->getCode());
 	}
 	
+	// crutch for linux and windows
 	private function normalizeArrayForNewLines(array $data) {
-		foreach($data as &$item) {
+		foreach($data as $k => $item) {
 			if(is_string($item)) {
-				$item = str_replace(["\r\n", "\n\r", "\r"], "\n", $item);
+				$data[$k] = str_replace(["\r\n", "\n\r", "\r"], "\n", $item);
+			} elseif(is_array($item)) {
+				$data[$k] = $this->normalizeArrayForNewLines($item);
 			}
 		}
 		return $data;
