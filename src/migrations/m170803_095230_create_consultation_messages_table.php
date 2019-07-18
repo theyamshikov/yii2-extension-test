@@ -24,7 +24,7 @@ class m170803_095230_create_consultation_messages_table extends Migration {
 			'sender_type' => $this->integer()->notNull(),
 			'sender_ip' => $this->string(15)->notNull(),
 			'content' => $this->string(5000)->notNull(),
-			'datetime' => $this->timestamp()->defaultValue(null)->notNull()->defaultValue(now()),
+			'datetime' => $this->timestamp()->defaultValue(null)->notNull()->defaultValue('now()'),
 			'status' => $this->integer()->notNull(),
 			'is_processed' => $this->boolean(),
 		];

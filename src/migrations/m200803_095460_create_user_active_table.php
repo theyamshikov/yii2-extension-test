@@ -7,7 +7,7 @@ use yii2lab\db\domain\db\MigrationCreateTable as Migration;
  * 
  * @package 
  */
-class m170803_095460_create_user_active_table extends Migration {
+class m200803_095460_create_user_active_table extends Migration {
 
 	public $table = '{{%user_active}}';
 
@@ -30,13 +30,7 @@ class m170803_095460_create_user_active_table extends Migration {
 
 	public function afterCreate()
 	{
-		$this->myAddForeignKey(
-			'active_id',
-			'{{%active}}',
-			'id',
-			'CASCADE',
-			'CASCADE'
-		);
+
 		$this->myAddForeignKey(
 			'provider_id',
 			'{{%bank_provider}}',
