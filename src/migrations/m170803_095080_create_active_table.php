@@ -3,13 +3,13 @@
 use yii2lab\db\domain\db\MigrationCreateTable as Migration;
 
 /**
- * Class _create_active_field_option_table
+ * Class _create_active_table
  * 
  * @package 
  */
-class _create_active_field_option_table extends Migration {
+class m170803_095080_create_active_table extends Migration {
 
-	public $table = '{{%active_field_option}}';
+	public $table = '{{%active}}';
 
 	/**
 	 * @inheritdoc
@@ -18,17 +18,17 @@ class _create_active_field_option_table extends Migration {
 	{
 		return [
 			'id' => $this->primaryKey()->notNull(),
-			'field_id' => $this->integer()->notNull()->comment('ID поля'),
-			'key' => $this->string(255)->notNull(),
+			'parent_id' => $this->integer()->comment('ID родительского типа актива'),
 			'title' => $this->string(255)->notNull(),
+			'handler_id' => $this->integer(),
 		];
 	}
 
 	public function afterCreate()
 	{
 		$this->myAddForeignKey(
-			'field_id',
-			'{{%active_field}}',
+			'parent_id',
+			'{{%active}}',
 			'id',
 			'CASCADE',
 			'CASCADE'

@@ -7,7 +7,7 @@ use yii2lab\db\domain\db\MigrationCreateTable as Migration;
  * 
  * @package 
  */
-class _create_active_category_table extends Migration {
+class m170803_095139_create_active_category_table extends Migration {
 
 	public $table = '{{%active_category}}';
 

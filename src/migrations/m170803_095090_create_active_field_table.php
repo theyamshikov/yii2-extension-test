@@ -7,7 +7,7 @@ use yii2lab\db\domain\db\MigrationCreateTable as Migration;
  * 
  * @package 
  */
-class _create_active_field_table extends Migration {
+class m170803_095090_create_active_field_table extends Migration {
 
 	public $table = '{{%active_field}}';
 

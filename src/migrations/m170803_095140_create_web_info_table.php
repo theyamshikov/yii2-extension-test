@@ -7,7 +7,7 @@ use yii2lab\db\domain\db\MigrationCreateTable as Migration;
  * 
  * @package 
  */
-class _create_web_info_table extends Migration {
+class m170803_095140_create_web_info_table extends Migration {
 
 	public $table = '{{%web_info}}';
 

@@ -122,7 +122,7 @@ return [
 				'withLocal' => true,
 				'isEnabled' => YII_ENV == YiiEnvEnum::TEST,
 			],
-			
+
             'yii2lab\app\domain\filters\config\StandardConfigMutations',
 		],
 	],
