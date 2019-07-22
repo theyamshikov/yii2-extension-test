@@ -6,10 +6,6 @@ return [
 		'item_name' => 'rAdministrator',
 	],
 	[
-		'user_id' => 385533,
-		'item_name' => 'rUnknownUser',
-	],
-	[
 		'user_id' => 381069,
 		'item_name' => 'rUnknownUser',
 	],
@@ -19,6 +15,18 @@ return [
 	],
 	[
 		'user_id' => 375664,
+		'item_name' => 'rUnknownUser',
+	],
+	[
+		'user_id' => 381072,
+		'item_name' => 'rFinanceSpecialist',
+	],
+	[
+		'user_id' => 381073,
+		'item_name' => 'rUnknownUser',
+	],
+	[
+		'user_id' => 381074,
 		'item_name' => 'rUnknownUser',
 	],
 	[
