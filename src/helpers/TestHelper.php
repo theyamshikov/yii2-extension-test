@@ -8,8 +8,7 @@ use yii2lab\extension\yii\helpers\FileHelper;
 
 class TestHelper {
 	
-	const PACKAGE_TEST_DB_FILE = '@common/runtime/sqlite/test-package.db';
-	
+
 	public static function copySqlite($dir) {
 		
 		$sourceFile = $dir . '/db/test.db';
