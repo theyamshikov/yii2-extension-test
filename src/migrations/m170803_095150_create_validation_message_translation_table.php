@@ -20,7 +20,7 @@ class m170803_095150_create_validation_message_translation_table extends Migrati
 			'id' => $this->integer()->notNull(),
 			'validation_id' => $this->integer()->notNull(),
 			'language' => $this->string(),
-			'message' => $this->string(),
+			'message' => $this->text(),
 		];
 	}
 

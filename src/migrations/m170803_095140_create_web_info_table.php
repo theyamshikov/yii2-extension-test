@@ -18,15 +18,15 @@ class m170803_095140_create_web_info_table extends Migration {
 	{
 		return [
 			'service_name' => $this->string(50),
-			'description' => $this->string(),
-			'choice_service_text' => $this->string(),
-			'picture' => $this->string(),
+			'description' => $this->text(),
+			'choice_service_text' => $this->text(),
+			'picture' => $this->text(),
 			'pic_prefix' => $this->string(50),
 			'background' => $this->string(50),
-			'instruction' => $this->string(),
-			'contacts' => $this->string(),
-			'tariff' => $this->string(),
-			'commission_info' => $this->string(),
+			'instruction' => $this->text(),
+			'contacts' => $this->text(),
+			'tariff' => $this->text(),
+			'commission_info' => $this->text(),
 			'priority' => $this->integer(),
 		];
 	}

@@ -19,7 +19,7 @@ class m170803_095260_create_merchant_info_table extends Migration {
 		return [
 			'service_name' => $this->string(50),
 			'merchant_name' => $this->string(255),
-			'description_company' => $this->string(),
+			'description_company' => $this->text(),
 			'site' => $this->string(),
 			'merchant_id' => $this->integer(),
 		];
