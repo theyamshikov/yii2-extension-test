@@ -20,7 +20,7 @@ class m170803_095290_create_partner_info_table extends Migration {
 			'id' => $this->primaryKey()->notNull(),
 			'name' => $this->string()->notNull(),
 			'country_id' => $this->integer()->notNull(),
-			'partner_login' => $this->string()->notNull(),
+			'partner_login' => $this->string(),
 			'prefix' => $this->string(),
 			'subject_type' => $this->integer(),
 			'parent' => $this->string(),
