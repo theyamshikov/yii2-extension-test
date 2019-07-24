@@ -1,3 +1,172 @@
 <?php
 
-return include(ROOT_DIR . '/vendor/yii2woop/yii2-service/src/domain/v3/fixtures/data/service_field_validation.php');
+return [
+	2390 => [
+		'service_field_validation_id' => '2390',
+		'service_field_id' => '2791',
+		'type' => 'required',
+		'param' => '{"message": "Заполните поле"}',
+	],
+	2391 => [
+		'service_field_validation_id' => '2391',
+		'service_field_id' => '2795',
+		'type' => 'required',
+		'param' => '{"message": "Проверьте квитанцию"}',
+	],
+	2396 => [
+		'service_field_validation_id' => '2396',
+		'service_field_id' => '2791',
+		'type' => 'match',
+		'param' => '{"not": "", "message": "", "pattern": "/^[^!0]+\\\\d{6,10}$/", "allowEmpty": "1"}',
+	],
+	2397 => [
+		'service_field_validation_id' => '2397',
+		'service_field_id' => '2791',
+		'type' => 'length',
+		'param' => '{"is": "", "max": "10", "min": "6", "tooLong": "", "encoding": "", "tooShort": "", "allowEmpty": "1"}',
+	],
+	2427 => [
+		'service_field_validation_id' => '2427',
+		'service_field_id' => '2881',
+		'type' => 'required',
+		'param' => '{"message": "Заполните поле"}',
+	],
+	2428 => [
+		'service_field_validation_id' => '2428',
+		'service_field_id' => '2884',
+		'type' => 'required',
+		'param' => '{"message": "Заполните поле"}',
+	],
+	2428999 => [
+		'service_field_validation_id' => '2428999',
+		'service_field_id' => '2884999',
+		'type' => 'required',
+		'param' => '{"message": "Заполните поле"}',
+	],
+	2434 => [
+		'service_field_validation_id' => '2434',
+		'service_field_id' => '2881',
+		'type' => 'match',
+		'param' => '{"not": "", "message": "", "pattern": "/^(705|777|771|776)\\\\d{7}$/", "allowEmpty": "1"}',
+	],
+	2435 => [
+		'service_field_validation_id' => '2435',
+		'service_field_id' => '2881',
+		'type' => 'length',
+		'param' => '{"is": "10", "max": "10", "min": "", "tooLong": "", "encoding": "", "tooShort": "", "allowEmpty": "1"}',
+	],
+	2440 => [
+		'service_field_validation_id' => '2440',
+		'service_field_id' => '2884',
+		'type' => 'numerical',
+		'param' => '{"max": "100000", "min": "5", "tooBig": "", "message": "", "tooSmall": "", "allowEmpty": "1", "integerOnly": "", "numberPattern": "/^\\\\s*[-+]?[0-9]*\\\\.?[0-9]+([eE][-+]?[0-9]+)?\\\\s*$/", "integerPattern": "/^\\\\s*[+-]?\\\\d+\\\\s*$/"}',
+	],
+	2524 => [
+		'service_field_validation_id' => '2524',
+		'service_field_id' => '2982',
+		'type' => 'required',
+		'param' => '{"message": "Заполните поле"}',
+	],
+	2535 => [
+		'service_field_validation_id' => '2535',
+		'service_field_id' => '2982',
+		'type' => 'numerical',
+		'param' => '{"max": "100000", "min": "60", "tooBig": "", "message": "", "tooSmall": "", "allowEmpty": "1", "integerOnly": "", "numberPattern": "/^\\\\s*[-+]?[0-9]*\\\\.?[0-9]+([eE][-+]?[0-9]+)?\\\\s*$/", "integerPattern": "/^\\\\s*[+-]?\\\\d+\\\\s*$/"}',
+	],
+	2979 => [
+		'service_field_validation_id' => '2979',
+		'service_field_id' => '3820',
+		'type' => 'required',
+		'param' => '{"message": "Заполните поле"}',
+	],
+	2980 => [
+		'service_field_validation_id' => '2980',
+		'service_field_id' => '3820',
+		'type' => 'match',
+		'param' => '{"not": "", "message": "", "pattern": "/^\\\\d{6,10}$/", "allowEmpty": "1"}',
+	],
+	2981 => [
+		'service_field_validation_id' => '2981',
+		'service_field_id' => '3820',
+		'type' => 'length',
+		'param' => '{"is": "", "max": "10", "min": "6", "tooLong": "", "encoding": "", "tooShort": "", "allowEmpty": "1"}',
+	],
+	2982 => [
+		'service_field_validation_id' => '2982',
+		'service_field_id' => '3823',
+		'type' => 'required',
+		'param' => '{"message": "Проверьте квитианцию"}',
+	],
+	3483 => [
+		'service_field_validation_id' => '3483',
+		'service_field_id' => '3811',
+		'type' => 'length',
+		'param' => '{"is": "", "max": "11", "min": "", "tooLong": "", "encoding": "", "tooShort": "", "allowEmpty": "1"}',
+	],
+	3485 => [
+		'service_field_validation_id' => '3485',
+		'service_field_id' => '3814',
+		'type' => 'numerical',
+		'param' => '{"max": "212000", "min": "10", "tooBig": "", "message": "", "tooSmall": "", "allowEmpty": "1", "integerOnly": "", "numberPattern": "/^\\\\s*[-+]?[0-9]*\\\\.?[0-9]+([eE][-+]?[0-9]+)?\\\\s*$/", "integerPattern": "/^\\\\s*[+-]?\\\\d+\\\\s*$/"}',
+	],
+	3486 => [
+		'service_field_validation_id' => '3486',
+		'service_field_id' => '3768',
+		'type' => 'length',
+		'param' => '{"is": "", "max": "10", "min": "", "tooLong": "", "encoding": "", "tooShort": "", "allowEmpty": "1"}',
+	],
+	3487 => [
+		'service_field_validation_id' => '3487',
+		'service_field_id' => '3771',
+		'type' => 'numerical',
+		'param' => '{"max": "100000", "min": "10", "tooBig": "", "message": "", "tooSmall": "", "allowEmpty": "1", "integerOnly": "", "numberPattern": "/^\\\\s*[-+]?[0-9]*\\\\.?[0-9]+([eE][-+]?[0-9]+)?\\\\s*$/", "integerPattern": "/^\\\\s*[+-]?\\\\d+\\\\s*$/"}',
+	],
+	3499 => [
+		'service_field_validation_id' => '3499',
+		'service_field_id' => '4554',
+		'type' => 'required',
+		'param' => '{"message": "Заполните поле"}',
+	],
+	3500 => [
+		'service_field_validation_id' => '3500',
+		'service_field_id' => '4554',
+		'type' => 'length',
+		'param' => '{"is": "", "max": "9", "min": "9", "tooLong": "", "encoding": "", "tooShort": "", "allowEmpty": "1"}',
+	],
+	3501 => [
+		'service_field_validation_id' => '3501',
+		'service_field_id' => '4554',
+		'type' => 'match',
+		'param' => '{"not": "", "message": "", "pattern": "/^\\\\d{9}$/", "allowEmpty": "1"}',
+	],
+	3502 => [
+		'service_field_validation_id' => '3502',
+		'service_field_id' => '4555',
+		'type' => 'required',
+		'param' => '{"message": "Заполните поле"}',
+	],
+	3557 => [
+		'service_field_validation_id' => '3557',
+		'service_field_id' => '3811',
+		'type' => 'required',
+		'param' => '{"message": "Заполните поле"}',
+	],
+	3558 => [
+		'service_field_validation_id' => '3558',
+		'service_field_id' => '3814',
+		'type' => 'required',
+		'param' => '{"message": "Заполните поле"}',
+	],
+	3826 => [
+		'service_field_validation_id' => '3826',
+		'service_field_id' => '3823',
+		'type' => 'numerical',
+		'param' => '{"max": "212000", "min": "10", "tooBig": "", "message": "", "tooSmall": "", "allowEmpty": "1", "integerOnly": "", "numberPattern": "/^\\\\s*[-+]?[0-9]*\\\\.?[0-9]+([eE][-+]?[0-9]+)?\\\\s*$/", "integerPattern": "/^\\\\s*[+-]?\\\\d+\\\\s*$/"}',
+	],
+	3881 => [
+		'service_field_validation_id' => '3881',
+		'service_field_id' => '4137',
+		'type' => 'default',
+		'param' => '{"value": "500", "message": "Cумма не изменяется, пидр", "setOnEmpty": ""}',
+	],
+];
