@@ -20,7 +20,7 @@
 		"guzzlehttp/guzzle": "*",
 		"codeception/base": "3.0.0",
 		"codeception/verify": "1.0.0",
-		"codeception/phpunit-wrapper": "8.0.3",
+		"codeception/phpunit-wrapper": "^8.0.3",
 		"phpunit/phpunit": "^7.0",
 		"php": ">=7.2"
 	}
