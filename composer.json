@@ -13,7 +13,7 @@
 			"email": "theyamshikov@yandex.ru"
 		}
 	],
-	"minimum-stability": "dev",
+	"minimum-stability": "stable",
 	"autoload": {
 		"psr-4": {
 			"yii2lab\\test\\": "src"
