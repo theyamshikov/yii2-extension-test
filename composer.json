@@ -24,7 +24,6 @@
 		"guzzlehttp/guzzle": "*",
 		"codeception/base": "3.0.3",
 		"codeception/verify": "1.0.0",
-		"phpunit/phpunit": "^8.0",
 		"php": ">=7.2"
 	}
 }
