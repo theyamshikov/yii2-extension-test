@@ -2,6 +2,7 @@
 
 namespace yii2lab\test\traits;
 
+use PHPUnit\Framework\Assert;
 use Throwable;
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
@@ -10,6 +11,7 @@ use yii2lab\domain\data\EntityCollection;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii2lab\extension\common\enums\RegexpPatternEnum;
 use yii2lab\extension\common\helpers\UrlHelper;
+use yii2lab\test\helpers\TestHelper;
 use yii2module\error\domain\helpers\UnProcessibleHelper;
 
 trait UnitAssertTrait
@@ -93,7 +95,7 @@ trait UnitAssertTrait
 		if($isStrict) {
 			$this->assertEquals($expect, $entityData);
 		} else {
-			$this->assertArraySubset($expect, $entityData);
+			TestHelper::assertArraySubset($expect, $entityData);
 		}
 	}
 	

@@ -2,6 +2,10 @@
 
 namespace yii2lab\test\helpers;
 
+use ArrayAccess;
+use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\Constraint\ArraySubset;
+use PHPUnit\Util\InvalidArgumentHelper;
 use yii2lab\app\domain\helpers\Config;
 use yii2lab\app\domain\helpers\Env;
 use yii2lab\extension\yii\helpers\FileHelper;
@@ -69,21 +73,27 @@ class TestHelper {
 		}
 		return $path;
 	}
-	
-	private static function filterItem($filter, $path) {
-		if(is_string($filter)) {
-			return $filter;
+
+	public static function assertArraySubset($subset, $array, bool $checkForObjectIdentity = false, string $message = ''): void
+	{
+		if (!(\is_array($subset) || $subset instanceof ArrayAccess)) {
+			throw InvalidArgumentHelper::factory(
+				1,
+				'array or ArrayAccess'
+			);
 		}
-		if(!array_key_exists('app', $filter)) {
-			return $filter;
+
+		if (!(\is_array($array) || $array instanceof ArrayAccess)) {
+			throw InvalidArgumentHelper::factory(
+				2,
+				'array or ArrayAccess'
+			);
 		}
-		if($filter['app'] == TEST_APPLICATION_DIR . DS . 'console') {
-			return null;
-		}
-		if($filter['app'] == TEST_APPLICATION_DIR . DS . 'common') {
-			$filter['app'] = $path;
-		}
-		return $filter;
+
+		$constraint = new ArraySubset($subset, $checkForObjectIdentity);
+
+		Assert::assertThat($array, $constraint, $message);
 	}
-	
+
+
 }
