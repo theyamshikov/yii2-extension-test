@@ -34,7 +34,7 @@ class Unit extends \Codeception\Test\Unit {
 	 * The return value is cast to an integer.
 	 * @since 5.1.0
 	 */
-	public function count() {
+	public function count(): int {
 		return parent::count();
 	}
 	
@@ -45,7 +45,7 @@ class Unit extends \Codeception\Test\Unit {
 	 *
 	 * @return TestResult
 	 */
-	public function run(TestResult $result = null) {
+	public function run(TestResult $result = null): TestResult {
 		return parent::run($result);
 	}
 	
