@@ -64,7 +64,22 @@ class TestHelper {
 		}
 		return $definition;
 	}
-	
+	private static function filterItem($filter, $path) {
+		if(is_string($filter)) {
+			return $filter;
+		}
+		if(!array_key_exists('app', $filter)) {
+			return $filter;
+		}
+		if($filter['app'] == TEST_APPLICATION_DIR . DS . 'console') {
+			return null;
+		}
+		if($filter['app'] == TEST_APPLICATION_DIR . DS . 'common') {
+			$filter['app'] = $path;
+		}
+		return $filter;
+	}
+
 	private static function trimPath($path) {
 		$path = FileHelper::trimRootPath($path);
 		$commonDir = DS . 'config';
