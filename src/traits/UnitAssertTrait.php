@@ -3,6 +3,7 @@
 namespace yii2lab\test\traits;
 
 use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\Constraint\IsType;
 use Throwable;
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
@@ -158,11 +159,54 @@ trait UnitAssertTrait
 			}
 			if($isStrict || property_exists($entity, $field)) {
 				$value = $entity->{$field};
-				$this->assertInternalType($type, $value);
+				$this->assertTypeAggregator($type, $value);
 			}
 		}
 	}
-	
+
+
+	private function assertTypeAggregator($type, $value){
+		/** @var TYPE_NAME $this */
+
+		switch ($type){
+			case IsType::TYPE_ARRAY :
+				$this->assertIsArray($value);
+				break;
+			case IsType::TYPE_BOOL :
+				$this->assertIsBool($value);
+				break;
+			case IsType::TYPE_FLOAT :
+				$this->assertIsFloat($value);
+				break;
+			case IsType::TYPE_INT :
+				$this->assertIsInt($value);
+				break;
+			case IsType::TYPE_NUMERIC :
+				$this->assertIsNumeric($value);
+				break;
+			case IsType::TYPE_OBJECT :
+				$this->assertIsObject($value);
+				break;
+			case IsType::TYPE_RESOURCE :
+				$this->assertIsResource($value);
+				break;
+			case IsType::TYPE_STRING :
+				$this->assertIsString($value);
+				break;
+			case IsType::TYPE_SCALAR :
+				$this->assertIsScalar($value);
+				break;
+			case IsType::TYPE_CALLABLE :
+				$this->assertIsCallable($value);
+				break;
+			case IsType::TYPE_ITERABLE :
+				$this->assertIsIterable($value);
+				break;
+			default:
+				throw new UnprocessableEntityHttpException('undefined type', 1 );
+		}
+	}
+
 	public function assertCollectionFormat(array $expect, $collection, $isStrict = true) {
 		$this->assertIsCollection($collection);
 		foreach($collection as $entity) {
