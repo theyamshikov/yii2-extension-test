@@ -1,6 +1,7 @@
 <?php
 
 return [
+	'MaintenanceMode' => false,
 	'pageSize' => 25,
 	'fixture' => [
 		'dir' => '@yii2lab/test/fixtures',
