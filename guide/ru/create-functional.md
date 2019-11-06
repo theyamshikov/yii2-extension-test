@@ -27,7 +27,7 @@ public function testAuthenticationBadPassword()
 		Yii::$app->account->auth->authentication(LoginEnum::LOGIN_ADMIN, LoginEnum::PASSWORD_INCORRECT);
 		$this->tester->assertBad();
 	} catch(UnprocessableEntityHttpException $e) {
-		$this->tester->assertUnprocessableEntityHttpException(['password' => 'Incorrect login or password'], $e);
+		$this->tester->assertUnprocessableEntityHttpException(['password' => 'Неверный логин или пароль'], $e);
 	}
 }
 ```

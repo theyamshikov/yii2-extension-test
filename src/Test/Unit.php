@@ -3,9 +3,11 @@
 namespace yii2lab\test\Test;
 
 use PHPUnit\Framework\TestResult;
-use yii\helpers\ArrayHelper;
-use yii2lab\test\helpers\DataHelper;
 use UnitTester;
+use yii\helpers\ArrayHelper;
+use yii\test\ActiveFixture;
+use yii2lab\db\domain\drivers\DbDriver;
+use yii2lab\test\helpers\DataHelper;
 
 // todo: autoreplace "use PHPUnit\Framework\TestResult;" to "use yii2lab\test\Test\Unit;"
 
@@ -16,14 +18,18 @@ use UnitTester;
  *
  * @property UnitTester $tester
  */
-class Unit extends \Codeception\Test\Unit {
-	
-	protected function equalExpected($method, $data) {
+class Unit extends \Codeception\Test\Unit
+{
+
+	public $fixtures;
+
+	protected function equalExpected($method, $data)
+	{
 		$data = ArrayHelper::toArray($data);
 		$expect = DataHelper::loadForTest(self::PACKAGE, $method, $data);
 		$this->tester->assertEquals($expect, $data, true);
 	}
-	
+
 	/**
 	 * Count elements of an object
 	 *
@@ -34,10 +40,11 @@ class Unit extends \Codeception\Test\Unit {
 	 * The return value is cast to an integer.
 	 * @since 5.1.0
 	 */
-	public function count(): int {
+	public function count(): int
+	{
 		return parent::count();
 	}
-	
+
 	/**
 	 * Runs a test and collects its result in a TestResult instance.
 	 *
@@ -45,8 +52,12 @@ class Unit extends \Codeception\Test\Unit {
 	 *
 	 * @return TestResult
 	 */
-	public function run(TestResult $result = null): TestResult {
+	public function run(TestResult $result = null): TestResult
+	{
 		return parent::run($result);
 	}
-	
+
+
+
+
 }
