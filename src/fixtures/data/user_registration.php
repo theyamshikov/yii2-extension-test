@@ -1,12 +1,3 @@
 <?php
 
-return [
-	[
-		'login' => '77777777757',
-		'email' => 'Asdasd@sdf.ru',
-		'activation_code' => '818730',
-		'ip' => null,
-		'create_time' => null,
-		'created_at' => '2018-07-17 04:45:39',
-	],
-];
+return include(ROOT_DIR . '/vendor/yii2module/yii2-account/src/domain/v2/fixtures/data/user-registration.php');
