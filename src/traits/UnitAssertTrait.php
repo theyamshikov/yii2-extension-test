@@ -116,7 +116,8 @@ trait UnitAssertTrait
 	}
 	
 	public function assertCollection(array $expect, array $collection, $isStrict = false) {
-		if(empty($collection) && empty($expect)) {
+		if(empty($collection) || empty($expect)) {
+			$this->assertBad();
 			return;
 		}
 		foreach($expect as $key => $expectItem) {
