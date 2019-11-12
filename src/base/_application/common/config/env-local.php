@@ -45,7 +45,7 @@ $forceConfig = [
 	'project' => 'test',
 	'mode' => [
 		'debug' => true,
-		'env' => 'dev',
+		'env' => 'test',
 	],
 	'domain' => [
 		'driver' => [

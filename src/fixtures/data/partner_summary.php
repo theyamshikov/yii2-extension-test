@@ -1,34 +1,10 @@
 <?php
 
 return [
-	1 => [
-		'id' => 1,
-		'partner_id' => 1,
-		'category_group_id' => 0,
-		'category_root' => null,
-	],
-	2 => [
-		'id' => 2,
-		'partner_id' => 2,
-		'category_group_id' => 0,
-		'category_root' => null,
-	],
-	3 => [
-		'id' => 3,
-		'partner_id' => 3,
-		'category_group_id' => 0,
-		'category_root' => null,
-	],
 	4 => [
 		'id' => 4,
 		'partner_id' => 4,
 		'category_group_id' => 0,
-		'category_root' => null,
-	],
-	5 => [
-		'id' => 5,
-		'partner_id' => 5,
-		'category_group_id' => 4,
 		'category_root' => null,
 	],
 	6 => [
@@ -41,12 +17,6 @@ return [
 		'id' => 7,
 		'partner_id' => 8,
 		'category_group_id' => 1,
-		'category_root' => null,
-	],
-	8 => [
-		'id' => 8,
-		'partner_id' => 10,
-		'category_group_id' => 0,
 		'category_root' => null,
 	],
 	9 => [
@@ -65,18 +35,6 @@ return [
 		'id' => 11,
 		'partner_id' => 16,
 		'category_group_id' => 0,
-		'category_root' => null,
-	],
-	12 => [
-		'id' => 12,
-		'partner_id' => 17,
-		'category_group_id' => 0,
-		'category_root' => null,
-	],
-	13 => [
-		'id' => 13,
-		'partner_id' => 14,
-		'category_group_id' => null,
 		'category_root' => null,
 	],
 	14 => [
@@ -103,9 +61,21 @@ return [
 		'category_group_id' => 0,
 		'category_root' => null,
 	],
-	18 => [
-		'id' => 18,
-		'partner_id' => 9,
+	5 => [
+		'id' => 5,
+		'partner_id' => 5,
+		'category_group_id' => 4,
+		'category_root' => null,
+	],
+	12 => [
+		'id' => 12,
+		'partner_id' => 17,
+		'category_group_id' => 0,
+		'category_root' => null,
+	],
+	1 => [
+		'id' => 1,
+		'partner_id' => 1,
 		'category_group_id' => 0,
 		'category_root' => null,
 	],
@@ -114,5 +84,41 @@ return [
 		'partner_id' => 29,
 		'category_group_id' => 4,
 		'category_root' => null,
+	],
+	3 => [
+		'id' => 3,
+		'partner_id' => 3,
+		'category_group_id' => 0,
+		'category_root' => null,
+	],
+	2 => [
+		'id' => 2,
+		'partner_id' => 2,
+		'category_group_id' => 1,
+		'category_root' => null,
+	],
+	8 => [
+		'id' => 8,
+		'partner_id' => 10,
+		'category_group_id' => 0,
+		'category_root' => null,
+	],
+	23 => [
+		'id' => 23,
+		'partner_id' => 31,
+		'category_group_id' => 0,
+		'category_root' => null,
+	],
+	18 => [
+		'id' => 18,
+		'partner_id' => 9,
+		'category_group_id' => 0,
+		'category_root' => 58,
+	],
+	13 => [
+		'id' => 13,
+		'partner_id' => 14,
+		'category_group_id' => 0,
+		'category_root' => 58,
 	],
 ];
