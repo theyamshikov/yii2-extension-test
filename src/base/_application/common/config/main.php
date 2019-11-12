@@ -6,7 +6,7 @@ $commonDir = '@yii2lab/test/base/_application/common';
 
 return [
 	'name' => 'Test',
-	'language' => LanguageEnum::RU,  // current Language
+	'language' =>  LanguageEnum::EN ,  // current Language
 	'sourceLanguage' => LanguageEnum::SOURCE, // Language development
 	'bootstrap' => ['log', 'queue'],
 	'timeZone' => 'UTC',
