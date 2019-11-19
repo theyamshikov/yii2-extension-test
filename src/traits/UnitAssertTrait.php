@@ -2,9 +2,10 @@
 
 namespace yii2lab\test\traits;
 
-use PHPUnit\Framework\Assert;
+
 use PHPUnit\Framework\Constraint\IsType;
 use Throwable;
+
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
 use yii2lab\domain\BaseEntity;
@@ -160,14 +161,22 @@ trait UnitAssertTrait
 			}
 			if($isStrict || property_exists($entity, $field)) {
 				$value = $entity->{$field};
-				$this->assertTypeAggregator($type, $value);
+				try {
+					$this->assertTypeAggregator($type, $value);
+				} catch (UnprocessableEntityHttpException $e) {
+					$this->assertTrue(false, $e->getMessage());
+				}
 			}
 		}
 	}
 
 
 	private function assertTypeAggregator($type, $value){
-		/** @var TYPE_NAME $this */
+		if(empty($value)){
+			$this->assertNice();
+			return;
+		}
+
 
 		switch ($type){
 			case IsType::TYPE_ARRAY :
@@ -179,7 +188,7 @@ trait UnitAssertTrait
 			case IsType::TYPE_FLOAT :
 				$this->assertIsFloat($value);
 				break;
-			case IsType::TYPE_INT :
+			case IsType::TYPE_INT:
 				$this->assertIsInt($value);
 				break;
 			case IsType::TYPE_NUMERIC :
@@ -204,7 +213,15 @@ trait UnitAssertTrait
 				$this->assertIsIterable($value);
 				break;
 			default:
-				throw new UnprocessableEntityHttpException('undefined type', 1 );
+				try{
+					$object = new $type();
+					if($value instanceof $object){
+						$this->assertNice();
+					}
+				} catch (\InvalidArgumentException $e){
+					throw new UnprocessableEntityHttpException("assertTypeAggregator didnt find this type - $type ", 1 );
+				}
+
 		}
 	}
 
