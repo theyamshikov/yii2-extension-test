@@ -55,7 +55,9 @@ $forceConfig = [
 	],
 ];
 
+
 $appConfig = TestHelper::loadConfig('common/config/env-local.php', '');
 $config['servers']['db'] = $appConfig['servers']['db'];
+$config['servers']['tps'] = $appConfig['servers']['tps'];
 //$forceConfig['domain']['driver'] = $appConfig['domain']['driver'];
 return ArrayHelper::merge($config, $forceConfig);

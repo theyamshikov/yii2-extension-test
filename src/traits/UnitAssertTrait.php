@@ -120,7 +120,12 @@ trait UnitAssertTrait
 			$this->assertBad();
 			return;
 		}
+
 		foreach($expect as $key => $expectItem) {
+			if(empty($collection[$key])){
+				$this->assertBad();
+				return;
+			}
 			$entity = $collection[$key];
 			$expectItem = ArrayHelper::toArray($expectItem);
 			$this->assertEntity($expectItem, $entity);
