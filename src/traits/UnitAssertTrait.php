@@ -58,7 +58,7 @@ trait UnitAssertTrait
 			'pageSize' => $pagination->pageSize,
 		];
 		
-		$this->assertArraySubset($expect, $p);
+		$this->assertEquals($expect, $p);
 	}
 	
 	public function assertUnprocessableEntityExceptionMessage(array $expect, UnprocessableEntityHttpException $exception) {
