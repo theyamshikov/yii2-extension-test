@@ -4,7 +4,7 @@ return [
 	1 => [
 		'favorite_id' => '1',
 		'user_id' => '381949',
-		'billinginfo' => '{"model":{"account":"7051111111","amount":"100"},"service_id":"2"}',
+		'billinginfo' => '{"model":{"account":"7051111111","amount":"100"},"service_id":"11"}',
 		'amount' => null,
 		'name' => 'beeline',
 		'status' => '2',
@@ -16,7 +16,7 @@ return [
 	2 => [
 		'favorite_id' => '2',
 		'user_id' => '381069',
-		'billinginfo' => '{"model":{"account":"7051111111","amount":"200"},"service_id":"2"}',
+		'billinginfo' => '{"model":{"account":"7051111111","amount":"200"},"service_id":"11"}',
 		'amount' => null,
 		'name' => 'beeline',
 		'status' => '2',
