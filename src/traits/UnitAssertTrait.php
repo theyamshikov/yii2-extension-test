@@ -172,7 +172,11 @@ trait UnitAssertTrait
 
 
 	private function assertTypeAggregator($type, $value){
-		/** @var TYPE_NAME $this */
+		if(empty($value)){
+			$this->assertNice();
+			return;
+		}
+
 
 		switch ($type){
 			case IsType::TYPE_ARRAY :
@@ -184,7 +188,7 @@ trait UnitAssertTrait
 			case IsType::TYPE_FLOAT :
 				$this->assertIsFloat($value);
 				break;
-			case IsType::TYPE_INT :
+			case IsType::TYPE_INT:
 				$this->assertIsInt($value);
 				break;
 			case IsType::TYPE_NUMERIC :
@@ -209,7 +213,15 @@ trait UnitAssertTrait
 				$this->assertIsIterable($value);
 				break;
 			default:
-				throw new UnprocessableEntityHttpException('undefined type', 1 );
+				try{
+					$object = new $type();
+					if($value instanceof $object){
+						$this->assertNice();
+					}
+				} catch (\InvalidArgumentException $e){
+					throw new UnprocessableEntityHttpException("assertTypeAggregator didnt find this type - $type ", 1 );
+				}
+
 		}
 	}
 
