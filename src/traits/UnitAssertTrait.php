@@ -2,9 +2,10 @@
 
 namespace yii2lab\test\traits;
 
-use PHPUnit\Framework\Assert;
+
 use PHPUnit\Framework\Constraint\IsType;
 use Throwable;
+
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
 use yii2lab\domain\BaseEntity;
@@ -165,7 +166,11 @@ trait UnitAssertTrait
 			}
 			if($isStrict || property_exists($entity, $field)) {
 				$value = $entity->{$field};
-				$this->assertTypeAggregator($type, $value);
+				try {
+					$this->assertTypeAggregator($type, $value);
+				} catch (UnprocessableEntityHttpException $e) {
+					$this->assertTrue(false, $e->getMessage());
+				}
 			}
 		}
 	}
