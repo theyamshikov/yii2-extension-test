@@ -22,10 +22,10 @@
 	"require": {
 		"yiisoft/yii2": "*",
 		"guzzlehttp/guzzle": "*",
-		"codeception/base": "3.1.0",
-		"codeception/verify": "1.0.0",
-		"codeception/phpunit-wrapper": "8.0.4",			
-		"phpunit/phpunit": "8.3.4",
+		"codeception/base": "3.1.*",
+		"codeception/verify": "1.0.*",
+		"codeception/phpunit-wrapper": "8.0.*",
+		"phpunit/phpunit": "8.3.*",
 		"php": ">=7.2"
 	}
 }
