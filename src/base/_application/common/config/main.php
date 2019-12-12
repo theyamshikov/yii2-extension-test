@@ -41,8 +41,8 @@ return [
 		'mailer' => [
 			'class' => 'yii\swiftmailer\Mailer',
 			'viewPath' => $commonDir . '/mail',
-            'htmlLayout' => '@yii2lab/notify/domain/mail/layouts/html',
-            'textLayout' => '@yii2lab/notify/domain/mail/layouts/text',
+            'htmlLayout' => '@yii2woop/notify/domain/mail/layouts/html',
+            'textLayout' => '@yii2woop/notify/domain/mail/layouts/text',
 			'useFileTransport' => true,
 			'fileTransportPath' => $commonDir . '/runtime/mail',
 		],

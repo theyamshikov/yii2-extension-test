@@ -1,5 +1,6 @@
 <?php
 
+use yii2lab\app\domain\helpers\Env;
 use yii2lab\db\domain\db\MigrationCreateTable as Migration;
 
 /**
@@ -16,6 +17,7 @@ class m150803_101010_create_configurate_migration_table extends Migration {
 
 	public function afterCreate()
 	{
+		$schema = Env::get('servers.db.test.defaultSchema');
 		$this->execute(
 			'CREATE OR REPLACE FUNCTION create_language_plpgsql()
 				RETURNS BOOLEAN AS $$
@@ -23,12 +25,12 @@ class m150803_101010_create_configurate_migration_table extends Migration {
 				    SELECT TRUE;
 				$$ LANGUAGE SQL;');
 
-		$this->execute(' 
+		$this->execute("
 				SELECT CASE WHEN NOT
 				    (
 				        SELECT  TRUE AS exists
 				        FROM    pg_language
-				        WHERE   lanname = \'plpgsql\'
+				        WHERE   lanname = 'plpgsql'
 				        UNION
 				        SELECT  FALSE AS exists
 				        ORDER BY exists DESC
@@ -38,13 +40,13 @@ class m150803_101010_create_configurate_migration_table extends Migration {
 				    create_language_plpgsql()
 				ELSE
 				    FALSE
-				END AS plpgsql_created;');
-		$this->execute('
-				DROP FUNCTION create_language_plpgsql(); ');
+				END AS plpgsql_created;");
+		$this->execute("
+				DROP FUNCTION create_language_plpgsql(); ");
 
 
-		$this->execute('
-			CREATE OR REPLACE FUNCTION test.get_sequence_name
+		$this->execute("
+		CREATE OR REPLACE FUNCTION $schema.get_sequence_name
 			  (p_table_name   varchar,
 			   OUT p_seq_name varchar)
 			  RETURNS varchar AS
@@ -57,11 +59,11 @@ class m150803_101010_create_configurate_migration_table extends Migration {
 			  JOIN pg_class c ON c.relname = s.sequence_name
 			  JOIN pg_depend AS d ON c.oid = d.objid
 			  join pg_class tab ON d.refobjid = tab.oid
-			  WHERE tab.relname = p_table_name AND d.deptype = \'a\';
+			  WHERE tab.relname = p_table_name AND d.deptype = 'a';
 			  RETURN;
 			END;
 			$$
-			LANGUAGE plpgsql SECURITY DEFINER;');
+			LANGUAGE plpgsql SECURITY DEFINER;");
 	}
 
 }
